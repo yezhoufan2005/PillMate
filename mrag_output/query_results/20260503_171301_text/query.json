@@ -1,0 +1,56 @@
+{
+  "query_text": "Metformin HCL",
+  "query_type": "text",
+  "top_k": 5,
+  "retrieved_drugs": [
+    {
+      "ndc": "00093-5215-01",
+      "drug_name": null,
+      "generic_name": "hydrochlorothiazide",
+      "manufacturer": null,
+      "physical_properties": [],
+      "similarity": 0.8520535230636597
+    },
+    {
+      "ndc": "00093-5213-01",
+      "drug_name": null,
+      "generic_name": "hydrochlorothiazide",
+      "manufacturer": null,
+      "physical_properties": [],
+      "similarity": 0.8520535230636597
+    },
+    {
+      "ndc": "00093-5214-01",
+      "drug_name": null,
+      "generic_name": "hydrochlorothiazide",
+      "manufacturer": null,
+      "physical_properties": [],
+      "similarity": 0.8520535230636597
+    },
+    {
+      "ndc": "00093-7293-53",
+      "drug_name": "LEVOFLOXACIN",
+      "generic_name": "levofloxacin",
+      "manufacturer": "DIRECT RX",
+      "physical_properties": [
+        {
+          "imprint": ""
+        }
+      ],
+      "similarity": 0.8448626399040222
+    },
+    {
+      "ndc": "65862-0537-50",
+      "drug_name": "LEVOFLOXACIN",
+      "generic_name": "levofloxacin",
+      "manufacturer": "DIRECT RX",
+      "physical_properties": [
+        {
+          "imprint": ""
+        }
+      ],
+      "similarity": 0.8448626399040222
+    }
+  ],
+  "response": "**推荐药物**: Metformin HCL（盐酸二甲双胍）\n\n**主要用途**: Metformin HCL是一种口服药物，主要用于治疗2型糖尿病，通过减少肝脏产生的葡萄糖和改善身体对胰岛素的敏感性来帮助控制血糖水平。\n\n**为什么推荐**: 如果您的症状与2型糖尿病相关，Metformin HCL可以帮助控制血糖水平。\n\n**适应症与用法用量**:\n- 适应症：用于治疗2型糖尿病，通常与饮食和运动结合使用。\n- 用法用量：剂量取决于患者的病情和医生的指导。通常，初始剂量为一次500毫克，一日两次，根据血糖水平和耐受性，剂量可能逐渐增加。\n\n**禁忌症与警告**:\n- 禁忌症：对Metformin HCL或其成分过敏的患者不应使用。\n- 警告：在开始使用Metformin HCL之前，应告知医生有关任何肾脏疾病、肝脏疾病或心脏问题。\n\n**常见副作用**:\n- 常见的副作用包括腹泻、胃痛、恶心和呕吐。\n\n**注意事项**:\n- 在用药期间应定期监测血糖水平。\n- 饮食和运动也是治疗2型糖尿病的重要组成部分。\n\n⚠️ 以上信息仅供参考，不构成医疗建议。用药前请咨询医生或药师，仔细阅读药品说明书。如出现严重不良反应，请立即就医。\n\n> ⚠️ 以上信息仅供参考，不构成医疗建议。用药前请咨询医生或药师，仔细阅读药品说明书。如出现严重不良反应，请立即就医。"
+}

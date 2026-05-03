@@ -1,0 +1,134 @@
+{
+  "query_text": "我牙龈发炎了，这个药有效吗？",
+  "query_type": "multimodal",
+  "top_k": 5,
+  "retrieved_drugs": [
+    {
+      "ndc": "00093-0148-01",
+      "drug_name": "Naproxen",
+      "generic_name": "naproxen",
+      "manufacturer": "Sportpharm LLC",
+      "physical_properties": [
+        {
+          "strength": "250 mg",
+          "color": "yellow",
+          "shape": "round",
+          "imprint": "s & g",
+          "scored": true
+        },
+        {
+          "strength": "375 mg",
+          "color": "yellow",
+          "shape": "capsule",
+          "imprint": "sg / 435"
+        },
+        {
+          "strength": "500 mg",
+          "color": "yellow",
+          "shape": "oblong",
+          "imprint": "s & g",
+          "scored": true
+        }
+      ],
+      "similarity": 0.7953842133283615
+    },
+    {
+      "ndc": "00093-7178-01",
+      "drug_name": "",
+      "generic_name": "nefazodone",
+      "manufacturer": "Teva Pharmaceuticals USA, Inc.",
+      "physical_properties": [
+        {
+          "strength": "50 mg",
+          "color": "pink",
+          "shape": "capsule",
+          "imprint": "7178 / 93"
+        },
+        {
+          "strength": "100 mg",
+          "color": "white",
+          "shape": "capsule",
+          "imprint": "1024 / 93",
+          "scored": true
+        },
+        {
+          "strength": "150 mg",
+          "color": "red",
+          "shape": "capsule",
+          "imprint": "7113 / 93",
+          "scored": true
+        },
+        {
+          "strength": "200 mg",
+          "color": "yellow",
+          "shape": "capsule",
+          "imprint": "1025 / 93"
+        },
+        {
+          "strength": "250 mg",
+          "color": "white",
+          "shape": "capsule",
+          "imprint": "1026 / 93"
+        }
+      ],
+      "similarity": 0.7880810052156448
+    },
+    {
+      "ndc": "68180-0502-01",
+      "drug_name": "Meloxicam",
+      "generic_name": "meloxicam",
+      "manufacturer": "Medcore LLC",
+      "physical_properties": [
+        {
+          "color": "light yellow",
+          "imprint": ""
+        }
+      ],
+      "similarity": 0.7812993317842484
+    },
+    {
+      "ndc": "00093-7325-01",
+      "drug_name": "TRANDOLAPRIL TABLETS",
+      "generic_name": "trandolapril",
+      "manufacturer": "Lupin Pharmaceuticals, Inc.",
+      "physical_properties": [
+        {
+          "strength": "1 mg",
+          "color": "pink",
+          "shape": "round",
+          "imprint": ""
+        },
+        {
+          "strength": "2 mg",
+          "color": "yellow",
+          "shape": "round",
+          "imprint": ""
+        },
+        {
+          "strength": "4 mg",
+          "color": "red",
+          "shape": "round",
+          "imprint": ""
+        }
+      ],
+      "similarity": 0.7770507037639618
+    },
+    {
+      "ndc": "52544-0913-01",
+      "drug_name": "",
+      "generic_name": "hydrocodone",
+      "manufacturer": "Keltman Pharmaceuticals Inc.",
+      "physical_properties": [
+        {
+          "strength": "5 mg",
+          "color": "white",
+          "shape": "capsule",
+          "imprint": "watson / 3202",
+          "scored": true
+        }
+      ],
+      "similarity": 0.7742495447397232
+    }
+  ],
+  "response": "**图片1识别结果**: Naproxen\n**主要用途**: 用于缓解类风湿性关节炎、骨关节炎、强直性脊柱炎、多关节炎性幼年特发性关节炎、腱炎、滑囊炎、急性痛风等症状，以及原发性痛经的管理。\n\n**适应症与用法用量**:\n- 类风湿性关节炎、骨关节炎、强直性脊柱炎、多关节炎性幼年特发性关节炎、腱炎、滑囊炎、急性痛风：剂量可能根据患者的临床反应进行调整。在耐受良好且需要更高抗炎/镇痛活性的患者中，剂量可能增加到每天1500毫克，为期最多6个月。\n- 原发性痛经：剂量可能根据患者的临床反应进行调整。\n\n**禁忌症与警告**:\n- 对萘普生或该药物成分过敏的患者不应使用。\n- 有哮喘、荨麻疹或其他过敏反应史的患者，尤其是对阿司匹林或其他非甾体抗炎药（NSAIDs）过敏的患者不应使用。\n- 存在胃肠道出血或穿孔风险的患者不应使用。\n\n**常见副作用**:\n- 消化不良、胃痛、恶心、呕吐、腹泻。\n- 头痛、头晕、皮疹。\n- 肝功能异常、肾功能损害。\n\n**注意事项**:\n- 使用萘普生时应遵循医生的建议，并按照说明书上的指导进行。\n- 长期使用萘普生可能增加心血管事件和胃肠道出血的风险。\n- 在使用萘普生期间，应定期进行血液检查，以监测肝功能和肾功能。\n\n关于用户额外问题，牙龈发炎通常是由细菌感染引起的，萘普生是一种非甾体抗炎药，主要用于缓解炎症和疼痛，但它并不是针对牙龈炎的特定治疗药物。对于牙龈炎，建议使用局部治疗或咨询牙医以获得适当的治疗建议。萘普生可能有助于缓解牙龈炎引起的疼痛和炎症，但不应作为主要治疗方法。\n\n> ⚠️ 以上信息仅供参考，不构成医疗建议。用药前请咨询医生或药师，仔细阅读药品说明书。如出现严重不良反应，请立即就医。"
+}

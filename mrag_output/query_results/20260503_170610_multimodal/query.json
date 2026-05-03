@@ -1,0 +1,86 @@
+{
+  "query_text": "这是什么药？",
+  "query_type": "multimodal",
+  "top_k": 5,
+  "retrieved_drugs": [
+    {
+      "ndc": "00093-7256-01",
+      "drug_name": "Glimepiride",
+      "generic_name": "glimepiride",
+      "manufacturer": "Bryant Ranch Prepack",
+      "physical_properties": [
+        {
+          "strength": "4 mg",
+          "color": "red",
+          "shape": "oblong",
+          "imprint": "y"
+        }
+      ],
+      "similarity": 0.7745741486549377
+    },
+    {
+      "ndc": "00093-7222-98",
+      "drug_name": "Fosinopril Sodium Tablets, USP",
+      "generic_name": "fosinopril",
+      "manufacturer": "Chartwell RX, LLC",
+      "physical_properties": [
+        {
+          "strength": "10 mg",
+          "color": "white",
+          "shape": "round",
+          "scored": true,
+          "imprint": ""
+        }
+      ],
+      "similarity": 0.7743920624256134
+    },
+    {
+      "ndc": "00172-4626-60",
+      "drug_name": "",
+      "generic_name": "doxycycline",
+      "manufacturer": "EPIC PHARMA, LLC",
+      "physical_properties": [
+        {
+          "strength": "20 mg",
+          "color": "white",
+          "shape": "round",
+          "imprint": "є",
+          "scored": true
+        }
+      ],
+      "similarity": 0.7740550458431243
+    },
+    {
+      "ndc": "00832-1024-00",
+      "drug_name": null,
+      "generic_name": "baclofen",
+      "manufacturer": "Cardinal Health 107, LLC",
+      "physical_properties": [
+        {
+          "strength": "10 mg",
+          "color": "white",
+          "shape": "round",
+          "imprint": "ls 288",
+          "scored": true
+        }
+      ],
+      "similarity": 0.7727151870727539
+    },
+    {
+      "ndc": "00093-7168-98",
+      "drug_name": "Amlodipine Besylate",
+      "generic_name": "amlodipine",
+      "manufacturer": "REMEDYREPACK INC.",
+      "physical_properties": [
+        {
+          "strength": "10 mg",
+          "color": "white",
+          "shape": "round",
+          "imprint": ""
+        }
+      ],
+      "similarity": 0.7710144996643066
+    }
+  ],
+  "response": "**图片1识别结果**: Glimepiride (Amaryl)\n\n**主要用途**: 用于辅助饮食和运动，改善2型糖尿病成人的血糖控制。\n\n**适应症与用法用量**:\n- 用于辅助饮食和运动，改善2型糖尿病成人的血糖控制。\n- 建议起始剂量为每日1毫克或2毫克，根据血糖反应，每1至2周增加1毫克或2毫克。\n- 最大推荐剂量为每日8毫克。\n\n**禁忌症与警告**:\n- 对格列吡嗪或该产品成分过敏的患者禁用。\n- 可能引起严重低血糖，特别是在老年患者、肾功能损害患者或与其他抗糖尿病药物合用时。\n\n**常见副作用**:\n- 低血糖、头痛、体重增加、消化不良。\n\n**注意事项**:\n- 用药前请咨询医生或药师，仔细阅读药品说明书。\n- 如出现严重不良反应，请立即就医。\n\n> ⚠️ 以上信息仅供参考，不构成医疗建议。用药前请咨询医生或药师，仔细阅读药品说明书。如出现严重不良反应，请立即就医。"
+}

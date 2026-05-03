@@ -1,0 +1,103 @@
+{
+  "query_text": "这是什么药？洛伐他汀吗",
+  "query_type": "multimodal",
+  "top_k": 5,
+  "retrieved_drugs": [
+    {
+      "ndc": "00093-7222-98",
+      "drug_name": "Fosinopril Sodium Tablets, USP",
+      "generic_name": "fosinopril",
+      "manufacturer": "Chartwell RX, LLC",
+      "physical_properties": [
+        {
+          "strength": "10 mg",
+          "color": "white",
+          "shape": "round",
+          "scored": true,
+          "imprint": ""
+        }
+      ],
+      "similarity": 0.8122607797384261
+    },
+    {
+      "ndc": "63010-0027-70",
+      "drug_name": "These highlights do not include all the information needed to use VIRACEPT safely and effectively. See full prescribing information for VIRACEPT.",
+      "generic_name": "nelfinavir",
+      "manufacturer": "AGOURON",
+      "physical_properties": [
+        {
+          "color": "blue",
+          "shape": "capsule",
+          "imprint": ""
+        }
+      ],
+      "similarity": 0.7966970682144164
+    },
+    {
+      "ndc": "00093-1062-01",
+      "drug_name": "Sotalol Hydrochloride",
+      "generic_name": "sotalol",
+      "manufacturer": "Bryant Ranch Prepack",
+      "physical_properties": [
+        {
+          "color": "red",
+          "shape": "capsule",
+          "scored": true,
+          "imprint": ""
+        }
+      ],
+      "similarity": 0.7929175376892089
+    },
+    {
+      "ndc": "00093-7369-56",
+      "drug_name": "",
+      "generic_name": "hydrochlorothiazide",
+      "manufacturer": "REMEDYREPACK INC.",
+      "physical_properties": [
+        {
+          "color": "white",
+          "imprint": ""
+        }
+      ],
+      "similarity": 0.7913999497890473
+    },
+    {
+      "ndc": "00591-0406-01",
+      "drug_name": "Lisinopril",
+      "generic_name": "lisinopril",
+      "manufacturer": "A-S Medication Solutions",
+      "physical_properties": [
+        {
+          "strength": "2.5 mg",
+          "imprint": "H / 145"
+        },
+        {
+          "strength": "2.5 mg",
+          "imprint": "H / 145"
+        },
+        {
+          "strength": "5 mg",
+          "color": "yellow",
+          "imprint": "H / 145"
+        },
+        {
+          "strength": "10 mg",
+          "color": "red",
+          "imprint": "H / 145"
+        },
+        {
+          "strength": "30 mg",
+          "color": "red",
+          "imprint": "H / 145"
+        },
+        {
+          "strength": "40 mg",
+          "color": "yellow",
+          "imprint": "H / 145"
+        }
+      ],
+      "similarity": 0.7889752745628357
+    }
+  ],
+  "response": "**图片1识别结果**: Fosinopril Sodium Tablets, USP\n**主要用途**: 用于治疗高血压，可作为单一疗法或与噻嗪类利尿剂联合使用。也用于心力衰竭的辅助治疗。\n\n**适应症与用法用量**\n- 高血压：初始剂量为10毫克，每日一次，可根据血压反应调整剂量。\n- 心力衰竭：初始剂量为5毫克，每日一次，根据耐受性增加剂量至每日40毫克。\n\n**禁忌症与警告**\n- 对fosinopril或药物组分过敏的患者不应使用。\n- 在某些患者中，尤其是那些同时使用利尿剂的患者，初始剂量可能会导致血压过低。\n\n**常见副作用**\n- 头痛、咳嗽、疲劳、腹泻、消化不良等。\n\n**注意事项**\n- 在使用fosinopril sodium tablets治疗高血压时，应定期监测血压。\n- 在使用fosinopril sodium tablets治疗心力衰竭时，应密切监测心脏功能和血压。\n\n> ⚠️ 以上信息仅供参考，不构成医疗建议。用药前请咨询医生或药师，仔细阅读药品说明书。如出现严重不良反应，请立即就医。\n\n关于用户额外问题，根据提供的信息，这张药片不是洛伐他汀。洛伐他汀通常用于降低胆固醇水平，其外观特征与fosinopril sodium tablets不同。"
+}

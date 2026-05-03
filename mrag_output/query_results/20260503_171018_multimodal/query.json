@@ -1,0 +1,139 @@
+{
+  "query_text": "这是什么药？",
+  "query_type": "multimodal",
+  "top_k": 5,
+  "retrieved_drugs": [
+    {
+      "ndc": "68180-0518-01",
+      "drug_name": "LISINOPRIL AND HYDROCHLOROTHIAZIDE USP",
+      "generic_name": "hydrochlorothiazide",
+      "manufacturer": "St Marys Medical Park Pharmacy",
+      "physical_properties": [
+        {
+          "strength": "10 mg",
+          "imprint": ""
+        },
+        {
+          "strength": "5 mg",
+          "color": "blue",
+          "shape": "hexagonal",
+          "imprint": ""
+        }
+      ],
+      "similarity": 0.6951054662466049
+    },
+    {
+      "ndc": "68453-0850-75",
+      "drug_name": "These highlights do not include all the information needed to use NAPRELAN",
+      "generic_name": "naproxen",
+      "manufacturer": "Upsher-Smith Laboratories, LLC",
+      "physical_properties": [
+        {
+          "strength": "375 mg",
+          "color": "white",
+          "shape": "capsule",
+          "imprint": "N / 375"
+        },
+        {
+          "strength": "412.5 mg",
+          "imprint": "N / 375"
+        },
+        {
+          "strength": "550 mg",
+          "imprint": "N / 375"
+        },
+        {
+          "strength": "825 mg",
+          "imprint": "N / 375"
+        }
+      ],
+      "similarity": 0.692600691318512
+    },
+    {
+      "ndc": "12496-1283-02",
+      "drug_name": null,
+      "generic_name": null,
+      "manufacturer": "Physicians Total Care, Inc.",
+      "physical_properties": [
+        {
+          "strength": "2mg",
+          "imprint": ""
+        },
+        {
+          "strength": "5mg",
+          "color": "orange",
+          "shape": "hexagonal",
+          "imprint": ""
+        }
+      ],
+      "similarity": 0.680191570520401
+    },
+    {
+      "ndc": "00378-2072-01",
+      "drug_name": "Lisinopril",
+      "generic_name": "lisinopril",
+      "manufacturer": "A-S Medication Solutions",
+      "physical_properties": [
+        {
+          "strength": "2.5 mg",
+          "imprint": "",
+          "color": "white"
+        },
+        {
+          "strength": "2.5 mg",
+          "imprint": "",
+          "color": "white"
+        },
+        {
+          "strength": "5 mg",
+          "color": "yellow",
+          "imprint": ""
+        },
+        {
+          "strength": "10 mg",
+          "color": "red",
+          "imprint": ""
+        },
+        {
+          "strength": "30 mg",
+          "color": "red",
+          "imprint": ""
+        },
+        {
+          "strength": "40 mg",
+          "color": "yellow",
+          "imprint": ""
+        }
+      ],
+      "similarity": 0.6793514102697372
+    },
+    {
+      "ndc": "68462-0361-01",
+      "drug_name": "Hydroxyzine Hydrochloride Tablets, USP",
+      "generic_name": "hydroxyzine",
+      "manufacturer": "Aurobindo Pharma Limited",
+      "physical_properties": [
+        {
+          "strength": "10 mg",
+          "color": "lavender",
+          "shape": "round",
+          "imprint": "1"
+        },
+        {
+          "strength": "25 mg",
+          "color": "lavender",
+          "shape": "round",
+          "imprint": "2"
+        },
+        {
+          "strength": "50 mg",
+          "color": "purple",
+          "shape": "round",
+          "imprint": "7"
+        }
+      ],
+      "similarity": 0.6786765158176422
+    }
+  ],
+  "response": "**图片1识别结果**: Lisinopril and hydrochlorothiazide USP\n**主要用途**: 用于治疗高血压。\n\n**适应症与用法用量**:\n- 用于治疗高血压。\n- 初始剂量为 Lisinopril 10 mg 和 Hydrochlorothiazide 12.5 mg，一日一次。根据血压反应调整剂量，剂量范围通常为 20 mg 至 40 mg 每日一次。\n\n**禁忌症与警告**:\n- 对该产品中任何成分过敏的患者以及有该药成分过敏史的患者禁用。\n- 在考虑使用 Lisinopril and hydrochlorothiazide USP 时，应注意黑人患者接受 ACE 抑制剂的报告中有更高的血管神经性水肿发生率，与非黑人相比。\n- 警告还包括在膜暴露期间可能发生的过敏性反应。\n\n**常见副作用**:\n- 常见的副作用包括头痛、疲劳、低血压、干咳、高钾血症和低钠血症。\n\n**注意事项**:\n- 在使用 Lisinopril and hydrochlorothiazide USP 之前，应咨询医生或药师。\n- 如出现严重不良反应，请立即就医。\n\n> ⚠️ 以上信息仅供参考，不构成医疗建议。用药前请咨询医生或药师，仔细阅读药品说明书。如出现严重不良反应，请立即就医。"
+}

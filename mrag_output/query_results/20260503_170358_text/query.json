@@ -1,0 +1,48 @@
+{
+  "query_text": "Ibuprofen 布洛芬",
+  "query_type": "text",
+  "top_k": 5,
+  "retrieved_drugs": [
+    {
+      "ndc": "00173-0135-55",
+      "drug_name": null,
+      "generic_name": "bupropion",
+      "manufacturer": null,
+      "physical_properties": [],
+      "similarity": 0.7706469893455505
+    },
+    {
+      "ndc": "00186-0520-60",
+      "drug_name": null,
+      "generic_name": "naproxen",
+      "manufacturer": null,
+      "physical_properties": [],
+      "similarity": 0.7688748240470886
+    },
+    {
+      "ndc": "00093-5215-01",
+      "drug_name": null,
+      "generic_name": "hydrochlorothiazide",
+      "manufacturer": null,
+      "physical_properties": [],
+      "similarity": 0.7664439678192139
+    },
+    {
+      "ndc": "00093-5213-01",
+      "drug_name": null,
+      "generic_name": "hydrochlorothiazide",
+      "manufacturer": null,
+      "physical_properties": [],
+      "similarity": 0.7664439678192139
+    },
+    {
+      "ndc": "00093-5214-01",
+      "drug_name": null,
+      "generic_name": "hydrochlorothiazide",
+      "manufacturer": null,
+      "physical_properties": [],
+      "similarity": 0.7664439678192139
+    }
+  ],
+  "response": "**推荐药物**: 布洛芬（Ibuprofen）\n\n**主要用途**: 布洛芬是一种非处方药，主要用于缓解轻至中度的疼痛，如头痛、牙痛、经痛、肌肉痛和关节痛，以及降低发烧。\n\n**为什么推荐**: 布洛芬适用于缓解轻至中度的疼痛和降低发烧，这与您提到的症状相匹配。\n\n**适应症与用法用量**:\n- 成人通常剂量为每次200至400毫克，每4至6小时一次，根据需要和医生的建议。\n- 儿童的剂量应根据体重和医生的指导来确定。\n\n**禁忌症与警告**:\n- 对布洛芬或其他非甾体抗炎药（NSAIDs）过敏的人不应使用。\n- 布洛芬可能不适合有心脏病、高血压、肝脏或肾脏疾病、胃溃疡或出血病史的人。\n- 长期或大量使用布洛芬可能增加心脏病发作或中风的风险。\n\n**常见副作用**:\n- 消化不良、胃痛、胃溃疡或出血。\n- 头痛、皮疹、哮喘发作。\n\n**注意事项**:\n- 在使用布洛芬之前，请咨询医生或药师，特别是如果您有其他医疗条件或正在服用其他药物。\n- 不要超过推荐剂量，除非医生建议。\n- 如果疼痛或发烧持续超过3天，请咨询医生。\n\n⚠️ 以上信息仅供参考，不构成医疗建议。用药前请咨询医生或药师，仔细阅读药品说明书。如出现严重不良反应，请立即就医。\n\n> ⚠️ 以上信息仅供参考，不构成医疗建议。用药前请咨询医生或药师，仔细阅读药品说明书。如出现严重不良反应，请立即就医。"
+}

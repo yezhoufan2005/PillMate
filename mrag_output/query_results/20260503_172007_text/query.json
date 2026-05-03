@@ -1,0 +1,7 @@
+{
+  "query_text": "",
+  "query_type": "text",
+  "top_k": 5,
+  "retrieved_drugs": [],
+  "response": "Sorry, failed to construct a valid prompt for the language model."
+}

@@ -1,0 +1,48 @@
+{
+  "query_text": "Atorvastatin 阿托伐他汀",
+  "query_type": "text",
+  "top_k": 5,
+  "retrieved_drugs": [
+    {
+      "ndc": "00093-5215-01",
+      "drug_name": null,
+      "generic_name": "hydrochlorothiazide",
+      "manufacturer": null,
+      "physical_properties": [],
+      "similarity": 0.7973875999450684
+    },
+    {
+      "ndc": "00093-5213-01",
+      "drug_name": null,
+      "generic_name": "hydrochlorothiazide",
+      "manufacturer": null,
+      "physical_properties": [],
+      "similarity": 0.7973875999450684
+    },
+    {
+      "ndc": "00093-5214-01",
+      "drug_name": null,
+      "generic_name": "hydrochlorothiazide",
+      "manufacturer": null,
+      "physical_properties": [],
+      "similarity": 0.7973875999450684
+    },
+    {
+      "ndc": "00173-0949-55",
+      "drug_name": null,
+      "generic_name": "acyclovir",
+      "manufacturer": null,
+      "physical_properties": [],
+      "similarity": 0.7900636196136475
+    },
+    {
+      "ndc": "51285-0063-90",
+      "drug_name": null,
+      "generic_name": "estradiol",
+      "manufacturer": null,
+      "physical_properties": [],
+      "similarity": 0.7868298888206482
+    }
+  ],
+  "response": "**推荐药物**: 阿托伐他汀（Atorvastatin）\n\n**主要用途**: 阿托伐他汀主要用于降低血液中的胆固醇水平，特别是降低低密度脂蛋白胆固醇（LDL-C），以降低心血管疾病的风险。\n\n**为什么推荐**: 阿托伐他汀是一种他汀类药物，通过抑制肝脏中的HMG-CoA还原酶，减少胆固醇的合成，从而降低血液中的胆固醇水平。对于需要降低胆固醇水平以预防心血管疾病的患者，阿托伐他汀是一个合适的选择。\n\n**适应症与用法用量**:\n- 适应症：用于降低心血管疾病风险，如冠心病、心肌梗死、脑卒中等。\n- 用法用量：通常根据患者的具体情况由医生制定，剂量范围通常在10mg至80mg之间，每日一次。\n\n**禁忌症与警告**:\n- 禁忌症：对阿托伐他汀或药物成分过敏的患者不应使用。\n- 警告：长期使用他汀类药物可能引起肌肉疼痛、肝功能异常等副作用，需定期检查肝功能和肌肉酶。\n\n**常见副作用**:\n- 肌肉疼痛、肌炎、肝功能异常、消化不良、头痛等。\n\n**注意事项**:\n- 在开始使用阿托伐他汀之前，应告知医生所有现有的医疗条件和正在服用的药物。\n- 遵医嘱服用，不要自行调整剂量。\n- 如出现严重不良反应，如肌肉疼痛、无力、呼吸困难等，应立即就医。\n\n⚠️ 以上信息仅供参考，不构成医疗建议。用药前请咨询医生或药师，仔细阅读药品说明书。如出现严重不良反应，请立即就医。\n\n> ⚠️ 以上信息仅供参考，不构成医疗建议。用药前请咨询医生或药师，仔细阅读药品说明书。如出现严重不良反应，请立即就医。"
+}

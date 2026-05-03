@@ -1,0 +1,48 @@
+{
+  "query_text": "Lisinopril",
+  "query_type": "text",
+  "top_k": 5,
+  "retrieved_drugs": [
+    {
+      "ndc": "00093-5215-01",
+      "drug_name": null,
+      "generic_name": "hydrochlorothiazide",
+      "manufacturer": null,
+      "physical_properties": [],
+      "similarity": 0.8684729337692261
+    },
+    {
+      "ndc": "00093-5213-01",
+      "drug_name": null,
+      "generic_name": "hydrochlorothiazide",
+      "manufacturer": null,
+      "physical_properties": [],
+      "similarity": 0.8684729337692261
+    },
+    {
+      "ndc": "00093-5214-01",
+      "drug_name": null,
+      "generic_name": "hydrochlorothiazide",
+      "manufacturer": null,
+      "physical_properties": [],
+      "similarity": 0.8684729337692261
+    },
+    {
+      "ndc": "00555-0588-01",
+      "drug_name": null,
+      "generic_name": "didanosine",
+      "manufacturer": null,
+      "physical_properties": [],
+      "similarity": 0.8488402366638184
+    },
+    {
+      "ndc": "99207-0467-30",
+      "drug_name": null,
+      "generic_name": "minocycline",
+      "manufacturer": null,
+      "physical_properties": [],
+      "similarity": 0.8425218462944031
+    }
+  ],
+  "response": "**推荐药物**: Lisinopril\n**主要用途**: Lisinopril是一种ACE抑制剂，主要用于治疗高血压和某些类型的心脏病，如心力衰竭和左心室功能不全后的心脏病患者。\n**为什么推荐**: Lisinopril适用于高血压和心脏病，这些症状可能与用户描述的症状相关。\n\n**适应症与用法用量**:\n- 高血压：通常剂量为每日一次，剂量根据患者的血压反应进行调整。\n- 心力衰竭和左心室功能不全：初始剂量通常较低，然后根据患者的耐受性和血压反应逐渐增加。\n\n**禁忌症与警告**:\n- 对lisinopril或其活性成分过敏的患者不应使用。\n- 在某些情况下，如严重肾功能损害、双侧肾动脉狭窄或动脉狭窄，使用时应谨慎。\n- 在怀孕期间，尤其是孕妇的第二和第三 trimester，不应使用lisinopril，因为它可能对胎儿造成伤害。\n\n**常见副作用**:\n- 咳嗽\n- 头痛\n- 脱水\n- 低血压\n\n**注意事项**:\n- 在开始使用lisinopril之前，应告知医生关于所有现有的医疗条件、过敏和正在服用的药物。\n- 在治疗期间，应定期监测血压和肾功能。\n- 避免在饮酒或使用其他降压药物时使用lisinopril，因为这可能会加剧低血压的效果。\n\n⚠️ 以上信息仅供参考，不构成医疗建议。用药前请咨询医生或药师，仔细阅读药品说明书。如出现严重不良反应，请立即就医。\n\n> ⚠️ 以上信息仅供参考，不构成医疗建议。用药前请咨询医生或药师，仔细阅读药品说明书。如出现严重不良反应，请立即就医。"
+}

@@ -1,0 +1,105 @@
+{
+  "query_text": "这是什么药？",
+  "query_type": "multimodal",
+  "top_k": 5,
+  "retrieved_drugs": [
+    {
+      "ndc": "00603-3079-21",
+      "drug_name": "Cyclobenzaprine hydrochloride Tablets, USP",
+      "generic_name": "cyclobenzaprine",
+      "manufacturer": "REMEDYREPACK INC.",
+      "physical_properties": [
+        {
+          "strength": "10 mg",
+          "color": "red",
+          "shape": "round",
+          "imprint": "u"
+        }
+      ],
+      "similarity": 0.7447255343198776
+    },
+    {
+      "ndc": "00378-2072-01",
+      "drug_name": "Lisinopril",
+      "generic_name": "lisinopril",
+      "manufacturer": "A-S Medication Solutions",
+      "physical_properties": [
+        {
+          "strength": "2.5 mg",
+          "imprint": "",
+          "color": "white"
+        },
+        {
+          "strength": "2.5 mg",
+          "imprint": "",
+          "color": "white"
+        },
+        {
+          "strength": "5 mg",
+          "color": "yellow",
+          "imprint": ""
+        },
+        {
+          "strength": "10 mg",
+          "color": "red",
+          "imprint": ""
+        },
+        {
+          "strength": "30 mg",
+          "color": "red",
+          "imprint": ""
+        },
+        {
+          "strength": "40 mg",
+          "color": "yellow",
+          "imprint": ""
+        }
+      ],
+      "similarity": 0.7384993404150009
+    },
+    {
+      "ndc": "00172-4097-60",
+      "drug_name": "Baclofen Tablets USP",
+      "generic_name": "baclofen",
+      "manufacturer": "REMEDYREPACK INC.",
+      "physical_properties": [
+        {
+          "strength": "20 mg",
+          "color": "white",
+          "shape": "round",
+          "imprint": "b",
+          "scored": true
+        }
+      ],
+      "similarity": 0.7256656557321548
+    },
+    {
+      "ndc": "00074-7149-90",
+      "drug_name": "",
+      "generic_name": "levothyroxine",
+      "manufacturer": "AbbVie Inc.",
+      "physical_properties": [
+        {
+          "imprint": "SYNTHROID / 25"
+        }
+      ],
+      "similarity": 0.7228958576917648
+    },
+    {
+      "ndc": "00172-2083-60",
+      "drug_name": "Hydrochlorothiazide Tablets, USP",
+      "generic_name": "hydrochlorothiazide",
+      "manufacturer": "REMEDYREPACK INC.",
+      "physical_properties": [
+        {
+          "strength": "25 mg",
+          "imprint": "",
+          "color": "orange",
+          "shape": "round"
+        }
+      ],
+      "similarity": 0.7198888003826142
+    }
+  ],
+  "response": "**图片1识别结果**: Cyclobenzaprine hydrochloride Tablets, USP\n**主要用途**: 用于缓解急性、疼痛性肌肉骨骼疾病相关的肌肉痉挛，作为休息和物理治疗的辅助手段。\n\n**适应症与用法用量**\n- 用于缓解急性、疼痛性肌肉骨骼疾病相关的肌肉痉挛。\n- 常见剂量为每天3次，每次5毫克。根据个体反应，剂量可增加至每天3次，每次10毫克。\n- 不建议连续使用超过两到三周。\n\n**禁忌症与警告**\n- 对本产品任何成分过敏。\n- 与单胺氧化酶抑制剂（MAO抑制剂）同时使用或在停用MAO抑制剂后14天内使用。\n- 心肌梗死后急性恢复期、心律失常、心脏传导阻滞或传导障碍、充血性心力衰竭、甲状腺功能亢进。\n\n**常见副作用**\n- 常见副作用包括口干、头晕、嗜睡、便秘、视力模糊等。\n\n**注意事项**\n- 建议在肝功能受损或老年患者中减少剂量。\n- 在使用过程中，如果出现严重不良反应，请立即就医。\n\n> ⚠️ 以上信息仅供参考，不构成医疗建议。用药前请咨询医生或药师，仔细阅读药品说明书。如出现严重不良反应，请立即就医。"
+}

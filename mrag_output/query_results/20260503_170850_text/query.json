@@ -1,0 +1,48 @@
+{
+  "query_text": "Minocycline 米诺环素",
+  "query_type": "text",
+  "top_k": 5,
+  "retrieved_drugs": [
+    {
+      "ndc": "99207-0467-30",
+      "drug_name": null,
+      "generic_name": "minocycline",
+      "manufacturer": null,
+      "physical_properties": [],
+      "similarity": 0.8722115755081177
+    },
+    {
+      "ndc": "00093-5215-01",
+      "drug_name": null,
+      "generic_name": "hydrochlorothiazide",
+      "manufacturer": null,
+      "physical_properties": [],
+      "similarity": 0.8391412496566772
+    },
+    {
+      "ndc": "00093-5213-01",
+      "drug_name": null,
+      "generic_name": "hydrochlorothiazide",
+      "manufacturer": null,
+      "physical_properties": [],
+      "similarity": 0.8391412496566772
+    },
+    {
+      "ndc": "00093-5214-01",
+      "drug_name": null,
+      "generic_name": "hydrochlorothiazide",
+      "manufacturer": null,
+      "physical_properties": [],
+      "similarity": 0.8391412496566772
+    },
+    {
+      "ndc": "00555-0588-01",
+      "drug_name": null,
+      "generic_name": "didanosine",
+      "manufacturer": null,
+      "physical_properties": [],
+      "similarity": 0.8040863871574402
+    }
+  ],
+  "response": "**推荐药物**: Minocycline（米诺环素）\n\n**主要用途**: 米诺环素是一种广谱抗生素，用于治疗由敏感细菌引起的多种感染，包括皮肤感染、呼吸道感染、尿路感染和性传播感染。\n\n**为什么推荐**: 米诺环素适用于治疗由敏感细菌引起的多种感染，其广谱抗菌特性使其成为多种感染症状的潜在治疗选择。\n\n**适应症与用法用量**:\n- 皮肤感染：通常成人剂量为每日100mg，分两次服用。\n- 呼吸道感染：成人剂量通常为每日100mg，分两次服用。\n- 尿路感染：成人剂量通常为每日100mg，分两次服用。\n- 性传播感染：剂量和疗程根据具体感染类型而定。\n\n**禁忌症与警告**:\n- 对米诺环素或其他四环素类药物过敏者禁用。\n- 孕妇和哺乳期妇女应避免使用，除非医生认为必要。\n- 可能导致牙齿变色和发育不良，不推荐用于8岁以下儿童。\n\n**常见副作用**:\n- 消化不良、恶心、呕吐\n- 头痛、头晕\n- 肝功能异常\n\n**注意事项**:\n- 在使用米诺环素之前，请告知医生您的过敏史、其他药物使用情况以及任何现有健康状况。\n- 使用米诺环素时，应避免阳光暴露，以减少皮肤敏感性和光毒性反应的风险。\n- 完成整个疗程，即使症状在用药期间有所改善。\n\n> ⚠️ 以上信息仅供参考，不构成医疗建议。用药前请咨询医生或药师，仔细阅读药品说明书。如出现严重不良反应，请立即就医。"
+}

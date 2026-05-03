@@ -1,0 +1,48 @@
+{
+  "query_text": "皮肤过敏痒红肿吃什么药？",
+  "query_type": "text",
+  "top_k": 5,
+  "retrieved_drugs": [
+    {
+      "ndc": "00093-5215-01",
+      "drug_name": null,
+      "generic_name": "hydrochlorothiazide",
+      "manufacturer": null,
+      "physical_properties": [],
+      "similarity": 0.7669844627380371
+    },
+    {
+      "ndc": "00093-5213-01",
+      "drug_name": null,
+      "generic_name": "hydrochlorothiazide",
+      "manufacturer": null,
+      "physical_properties": [],
+      "similarity": 0.7669844627380371
+    },
+    {
+      "ndc": "00093-5214-01",
+      "drug_name": null,
+      "generic_name": "hydrochlorothiazide",
+      "manufacturer": null,
+      "physical_properties": [],
+      "similarity": 0.7669844627380371
+    },
+    {
+      "ndc": "00173-0562-00",
+      "drug_name": null,
+      "generic_name": "naratriptan",
+      "manufacturer": null,
+      "physical_properties": [],
+      "similarity": 0.7523412704467773
+    },
+    {
+      "ndc": "00173-0561-00",
+      "drug_name": null,
+      "generic_name": "naratriptan",
+      "manufacturer": null,
+      "physical_properties": [],
+      "similarity": 0.7523412704467773
+    }
+  ],
+  "response": "**推荐药物**: 氢氯噻嗪 (Hydrochlorothiazide)\n\n**主要用途**: 氢氯噻嗪是一种利尿剂，主要用于治疗高血压和某些类型的水肿。\n\n**为什么推荐**: 虽然氢氯噻嗪的主要适应症不是针对过敏症状，但它具有抗炎和抗过敏的特性，有时在治疗过敏相关的水肿和瘙痒时会被医生开具。\n\n**适应症与用法用量**:\n- 用于治疗高血压。\n- 用于治疗水肿，如心源性水肿、肝硬化和肾病综合征引起的水肿。\n\n**禁忌症与警告**:\n- 对氢氯噻嗪或其他噻嗪类利尿剂过敏的患者不应使用。\n- 在某些情况下，如电解质失衡、糖尿病、痛风等，使用时应谨慎。\n\n**常见副作用**:\n- 头痛、头晕、低钠血症、低钾血症等。\n\n**注意事项**:\n- 使用前请咨询医生或药师。\n- 如出现严重不良反应，请立即就医。\n\n> ⚠️ 以上信息仅供参考，不构成医疗建议。用药前请咨询医生或药师，仔细阅读药品说明书。如出现严重不良反应，请立即就医。"
+}

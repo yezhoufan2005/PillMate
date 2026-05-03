@@ -1,0 +1,1286 @@
+<!DOCTYPE html>
+<html lang="zh-CN" data-theme="light">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PillMate - 家庭用药MRAG助手</title>
+    <script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
+    <style>
+        :root {
+            --sidebar-bg: #f7f5f2;
+            --sidebar-hover: #ebe7e2;
+            --sidebar-active: #e3eeed;
+            --sidebar-text: #78716c;
+            --sidebar-text-active: #292524;
+            --sidebar-border: #e7e5e4;
+            --accent: #0d9488;
+            --accent-hover: #0f766e;
+            --accent-light: #f0fdfa;
+            --bg-primary: #fafaf9;
+            --bg-secondary: #f5f5f4;
+            --bg-elevated: #ffffff;
+            --text-primary: #1c1917;
+            --text-secondary: #78716c;
+            --text-tertiary: #a8a29e;
+            --border: #e7e5e4;
+            --user-bubble: #0d9488;
+            --user-bubble-text: #ffffff;
+            --shadow-sm: 0 1px 2px rgba(0,0,0,0.04);
+            --shadow-md: 0 4px 12px rgba(0,0,0,0.06);
+            --shadow-lg: 0 8px 24px rgba(0,0,0,0.08);
+            --radius-lg: 18px;
+            --radius-md: 14px;
+            --radius-sm: 10px;
+            --radius-xs: 6px;
+            --transition: 0.2s cubic-bezier(0.4,0,0.2,1);
+        }
+
+        [data-theme="dark"] {
+            --sidebar-bg: #1c1917;
+            --sidebar-hover: #292524;
+            --sidebar-active: #134e4a;
+            --sidebar-text: #a8a29e;
+            --sidebar-text-active: #f5f5f4;
+            --sidebar-border: #292524;
+            --accent: #2dd4bf;
+            --accent-hover: #5eead4;
+            --accent-light: #042f2e;
+            --bg-primary: #1c1917;
+            --bg-secondary: #292524;
+            --bg-elevated: #292524;
+            --text-primary: #f5f5f4;
+            --text-secondary: #a8a29e;
+            --text-tertiary: #78716c;
+            --border: #44403c;
+            --user-bubble: #0d9488;
+            --user-bubble-text: #ffffff;
+            --shadow-sm: 0 1px 2px rgba(0,0,0,0.2);
+            --shadow-md: 0 4px 12px rgba(0,0,0,0.3);
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'PingFang SC', 'Microsoft YaHei', 'Helvetica Neue', sans-serif;
+            background: var(--bg-primary);
+            color: var(--text-primary);
+            display: flex;
+            height: 100vh;
+            overflow: hidden;
+            -webkit-font-smoothing: antialiased;
+        }
+
+        /* ==================== SIDEBAR ==================== */
+        .sidebar {
+            width: 300px;
+            background: var(--sidebar-bg);
+            display: flex;
+            flex-direction: column;
+            flex-shrink: 0;
+            transition: width var(--transition);
+            position: relative;
+            z-index: 50;
+            border-right: 1px solid var(--sidebar-border);
+        }
+        .sidebar.collapsed { width: 0; overflow: hidden; border-right: none; }
+
+        .sidebar-system {
+            padding: 14px 16px 10px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        .sidebar-system-logo {
+            width: 32px; height: 32px;
+            border-radius: 10px;
+            background: var(--accent);
+            color: #fff;
+            display: flex; align-items: center; justify-content: center;
+            font-size: 16px; font-weight: 700;
+            flex-shrink: 0;
+        }
+        .sidebar-system-info { min-width: 0; }
+        .sidebar-system-name { font-size: 14px; font-weight: 700; color: var(--text-primary); }
+        .sidebar-system-meta { font-size: 10px; color: var(--text-tertiary); margin-top: 2px; }
+
+        .sidebar-top {
+            padding: 4px 12px 8px;
+        }
+        .btn-new-chat {
+            width: 100%;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            padding: 10px 14px;
+            border-radius: var(--radius-sm);
+            border: 1px solid var(--sidebar-border);
+            background: var(--bg-elevated);
+            color: var(--text-primary);
+            font-size: 13px;
+            cursor: pointer;
+            transition: all var(--transition);
+            font-family: inherit;
+            font-weight: 500;
+        }
+        .btn-new-chat:hover { background: var(--sidebar-hover); border-color: var(--text-tertiary); }
+        .btn-new-chat svg { width: 16px; height: 16px; flex-shrink: 0; opacity: 0.7; }
+
+        .sidebar-conversations {
+            flex: 1;
+            overflow-y: auto;
+            padding: 4px 8px;
+        }
+        .sidebar-conversations::-webkit-scrollbar { width: 4px; }
+        .sidebar-conversations::-webkit-scrollbar-thumb { background: var(--border); border-radius: 2px; }
+
+        .conv-item {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            padding: 9px 12px;
+            border-radius: var(--radius-sm);
+            color: var(--sidebar-text);
+            font-size: 13px;
+            cursor: pointer;
+            transition: all var(--transition);
+            margin-bottom: 1px;
+            position: relative;
+        }
+        .conv-item:hover { background: var(--sidebar-hover); }
+        .conv-item.active { background: var(--sidebar-active); color: var(--sidebar-text-active); font-weight: 500; }
+        .conv-item-title {
+            flex: 1;
+            overflow: hidden;
+            text-overflow: ellipsis;
+            white-space: nowrap;
+            font-size: 13px;
+        }
+        .conv-item-time { font-size: 11px; opacity: 0.5; flex-shrink: 0; }
+        .conv-item-delete {
+            opacity: 0;
+            width: 24px; height: 24px;
+            border-radius: 4px; border: none;
+            background: transparent;
+            color: inherit;
+            cursor: pointer;
+            display: flex; align-items: center; justify-content: center;
+            transition: all var(--transition);
+            flex-shrink: 0;
+        }
+        .conv-item:hover .conv-item-delete { opacity: 0.6; }
+        .conv-item-delete:hover { opacity: 1 !important; background: rgba(239,68,68,0.15); color: #ef4444; }
+        .conv-item-delete svg { width: 14px; height: 14px; }
+
+        .conv-item-export {
+            opacity: 0;
+            width: 24px; height: 24px;
+            border-radius: 4px; border: none;
+            background: transparent;
+            color: inherit;
+            cursor: pointer;
+            display: flex; align-items: center; justify-content: center;
+            transition: all var(--transition);
+            flex-shrink: 0;
+        }
+        .conv-item:hover .conv-item-export { opacity: 0.6; }
+        .conv-item-export:hover { opacity: 1 !important; background: var(--sidebar-hover); color: var(--accent); }
+        .conv-item-export svg { width: 14px; height: 14px; }
+
+        .no-conversations {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            padding: 40px 20px;
+            color: var(--text-tertiary);
+            text-align: center;
+            font-size: 13px;
+            gap: 8px;
+        }
+        .no-conversations svg { width: 36px; height: 36px; opacity: 0.3; }
+
+        .sidebar-bottom {
+            border-top: 1px solid var(--sidebar-border);
+            padding: 10px 12px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        .user-avatar-svg {
+            width: 30px; height: 30px;
+            border-radius: 50%;
+            background: var(--user-bubble);
+            color: #fff;
+            display: flex; align-items: center; justify-content: center;
+            flex-shrink: 0;
+        }
+        .user-avatar-svg svg { width: 16px; height: 16px; }
+        .user-info { flex: 1; min-width: 0; }
+        .user-name { font-size: 13px; color: var(--text-primary); font-weight: 500; }
+        .user-email { font-size: 11px; color: var(--text-tertiary); overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+
+        .btn-theme-toggle {
+            width: 32px; height: 32px;
+            border: none;
+            border-radius: var(--radius-xs);
+            background: transparent;
+            color: var(--text-tertiary);
+            cursor: pointer;
+            display: flex; align-items: center; justify-content: center;
+            transition: all var(--transition);
+            flex-shrink: 0;
+        }
+        .btn-theme-toggle:hover { background: var(--sidebar-hover); color: var(--text-primary); }
+        .btn-theme-toggle svg { width: 17px; height: 17px; }
+
+        /* ==================== MAIN ==================== */
+        .main {
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+            min-width: 0;
+            background: var(--bg-primary);
+        }
+
+        .chat-header {
+            padding: 10px 20px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            background: var(--bg-elevated);
+            border-bottom: 1px solid var(--border);
+            flex-shrink: 0;
+        }
+        .btn-toggle-sidebar {
+            width: 34px; height: 34px;
+            border-radius: var(--radius-sm);
+            border: none;
+            background: transparent;
+            cursor: pointer;
+            display: flex; align-items: center; justify-content: center;
+            color: var(--text-secondary);
+            transition: all var(--transition);
+            flex-shrink: 0;
+        }
+        .btn-toggle-sidebar:hover { background: var(--bg-secondary); color: var(--text-primary); }
+        .btn-toggle-sidebar svg { width: 20px; height: 20px; }
+
+        .header-title {
+            font-size: 14px;
+            font-weight: 600;
+            color: var(--text-primary);
+            flex: 1;
+            overflow: hidden;
+            text-overflow: ellipsis;
+            white-space: nowrap;
+        }
+        .header-right {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            flex-shrink: 0;
+        }
+        .header-logo {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            padding: 4px 12px 4px 4px;
+            border-radius: 24px;
+            background: var(--accent-light);
+        }
+        .header-logo-img {
+            width: 28px; height: 28px;
+            border-radius: 8px;
+            background: var(--accent);
+            display: flex; align-items: center; justify-content: center;
+            color: #fff;
+            font-size: 14px;
+            font-weight: 700;
+        }
+        .header-logo-text {
+            font-size: 12px;
+            font-weight: 600;
+            color: var(--accent);
+        }
+        .header-badge {
+            font-size: 11px;
+            padding: 4px 10px;
+            border-radius: 12px;
+            background: var(--accent-light);
+            color: var(--accent);
+            font-weight: 500;
+            white-space: nowrap;
+        }
+
+        /* ==================== CHAT MESSAGES ==================== */
+        .chat-messages {
+            flex: 1;
+            overflow-y: auto;
+            padding: 0;
+            scroll-behavior: smooth;
+        }
+        .chat-messages::-webkit-scrollbar { width: 6px; }
+        .chat-messages::-webkit-scrollbar-thumb { background: var(--border); border-radius: 3px; }
+
+        .chat-inner {
+            max-width: 768px;
+            margin: 0 auto;
+            padding: 20px 24px 40px;
+            display: flex;
+            flex-direction: column;
+            gap: 28px;
+        }
+
+        .msg {
+            display: flex;
+            gap: 12px;
+            animation: fadeSlideIn 0.3s ease;
+        }
+        @keyframes fadeSlideIn {
+            from { opacity: 0; transform: translateY(10px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        .msg.user { flex-direction: row-reverse; }
+
+        .msg-avatar {
+            width: 32px; height: 32px;
+            border-radius: 50%;
+            display: flex; align-items: center; justify-content: center;
+            flex-shrink: 0;
+            font-size: 15px;
+            margin-top: 2px;
+        }
+        .msg.assistant .msg-avatar {
+            background: var(--accent);
+            color: #fff;
+        }
+        .msg.user .msg-avatar {
+            background: var(--user-bubble);
+            color: #fff;
+        }
+        .avatar-icon { width: 18px; height: 18px; }
+
+        .msg-content {
+            flex: 1;
+            min-width: 0;
+            display: flex;
+            flex-direction: column;
+        }
+        .msg.user .msg-content { align-items: flex-end; }
+
+        .msg-bubble {
+            border-radius: var(--radius-md);
+            padding: 12px 16px;
+            font-size: 14px;
+            line-height: 1.8;
+            max-width: 100%;
+            word-break: break-word;
+        }
+        .msg.user .msg-bubble {
+            background: var(--user-bubble);
+            color: var(--user-bubble-text);
+            border-bottom-right-radius: 4px;
+        }
+        .msg.assistant .msg-bubble {
+            background: transparent;
+            color: var(--text-primary);
+            padding: 0;
+        }
+
+        .msg-image-preview {
+            max-width: 200px;
+            max-height: 200px;
+            border-radius: var(--radius-sm);
+            margin-bottom: 8px;
+            border: 1px solid var(--border);
+            box-shadow: var(--shadow-sm);
+        }
+        .msg.user .msg-image-preview { border-color: rgba(255,255,255,0.2); }
+
+        .msg-bubble h2 { font-size: 17px; margin: 14px 0 8px; font-weight: 600; }
+        .msg-bubble h3 { font-size: 15px; margin: 10px 0 6px; font-weight: 600; }
+        .msg-bubble h4 { font-size: 14px; margin: 8px 0 4px; font-weight: 600; }
+        .msg-bubble p { margin: 5px 0; }
+        .msg-bubble ul, .msg-bubble ol { padding-left: 22px; margin: 8px 0; }
+        .msg-bubble li { margin: 3px 0; }
+        .msg-bubble strong { font-weight: 600; }
+        .msg-bubble blockquote {
+            border-left: 3px solid var(--accent);
+            padding: 8px 14px;
+            margin: 10px 0;
+            background: var(--accent-light);
+            border-radius: 0 var(--radius-xs) var(--radius-xs) 0;
+            font-size: 13px;
+        }
+        .msg-bubble hr { border: none; border-top: 1px solid var(--border); margin: 14px 0; }
+        .msg-bubble code {
+            background: var(--bg-secondary);
+            padding: 2px 6px;
+            border-radius: 4px;
+            font-size: 13px;
+            font-family: 'SF Mono', 'Fira Code', 'Consolas', monospace;
+        }
+        .msg-bubble pre {
+            background: #1a1a2e;
+            color: #e5e7eb;
+            padding: 14px 16px;
+            border-radius: var(--radius-sm);
+            overflow-x: auto;
+            margin: 10px 0;
+            font-size: 13px;
+            line-height: 1.5;
+        }
+        .msg-bubble pre code { background: transparent; padding: 0; color: inherit; }
+        .msg-bubble table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 10px 0;
+            font-size: 13px;
+            border-radius: var(--radius-sm);
+            overflow: hidden;
+            box-shadow: var(--shadow-sm);
+        }
+        .msg-bubble th, .msg-bubble td {
+            border: 1px solid var(--border);
+            padding: 8px 12px;
+            text-align: left;
+        }
+        .msg-bubble th {
+            background: var(--bg-secondary);
+            font-weight: 600;
+            font-size: 12px;
+            text-transform: uppercase;
+            letter-spacing: 0.3px;
+        }
+        .msg-bubble tr:nth-child(even) td { background: var(--bg-primary); }
+
+        .msg.user .msg-bubble blockquote {
+            background: rgba(255,255,255,0.12);
+            border-left-color: rgba(255,255,255,0.3);
+            color: rgba(255,255,255,0.9);
+        }
+
+        /* ==================== MESSAGE ACTIONS ==================== */
+        .msg-actions {
+            display: flex;
+            gap: 2px;
+            margin-top: 4px;
+            opacity: 0;
+            transition: opacity var(--transition);
+        }
+        .msg.assistant .msg-actions { padding-left: 0; }
+        .msg.user .msg-actions { flex-direction: row-reverse; }
+        .msg:hover .msg-actions, .msg-actions.visible { opacity: 1; }
+
+        .msg-action-btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 4px;
+            padding: 4px 8px;
+            border-radius: var(--radius-xs);
+            border: none;
+            background: transparent;
+            color: var(--text-tertiary);
+            font-size: 11px;
+            cursor: pointer;
+            transition: all var(--transition);
+            font-family: inherit;
+        }
+        .msg-action-btn:hover { background: var(--bg-secondary); color: var(--text-primary); }
+        .msg-action-btn svg { width: 13px; height: 13px; }
+        .msg-action-btn.copied { color: var(--accent); }
+        .msg-action-btn.danger:hover { background: rgba(239,68,68,0.1); color: #ef4444; }
+
+        /* ==================== DRUG CARDS ==================== */
+        .drug-cards {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 8px;
+            margin-top: 14px;
+            padding-top: 14px;
+            border-top: 1px solid var(--border);
+        }
+        .drug-card {
+            background: var(--bg-elevated);
+            border: 1px solid var(--border);
+            border-radius: var(--radius-sm);
+            padding: 10px 12px;
+            font-size: 12px;
+            min-width: 160px;
+            flex: 1;
+            box-shadow: var(--shadow-sm);
+            transition: border-color var(--transition);
+        }
+        .drug-card:hover { border-color: var(--accent); }
+        .drug-card .sim-badge {
+            display: inline-block;
+            padding: 2px 8px;
+            border-radius: 10px;
+            font-size: 10px;
+            font-weight: 600;
+            margin-bottom: 4px;
+        }
+        .sim-badge.high { background: #dcfce7; color: #166534; }
+        .sim-badge.mid { background: #fef9c3; color: #854d0e; }
+        .sim-badge.low { background: #fee2e2; color: #991b1b; }
+        .drug-card .drug-name { font-weight: 600; color: var(--text-primary); margin-bottom: 2px; }
+        .drug-card .drug-meta { color: var(--text-secondary); font-size: 11px; margin-bottom: 4px; }
+        .drug-card .drug-phys { display: flex; gap: 4px; flex-wrap: wrap; }
+        .drug-card .drug-phys span {
+            padding: 2px 7px;
+            border-radius: 4px;
+            font-size: 10px;
+            font-weight: 500;
+        }
+        .phys-color { background: #f0fdf4; color: #166534; }
+        .phys-shape { background: #eff6ff; color: #1e40af; }
+        .phys-imprint { background: #fef2f2; color: #991b1b; }
+
+        /* ==================== TYPING ==================== */
+        .typing-dots { display: flex; gap: 4px; padding: 6px 0; }
+        .typing-dots span {
+            width: 6px; height: 6px;
+            border-radius: 50%;
+            background: var(--text-tertiary);
+            animation: bounce 1.4s infinite ease-in-out;
+        }
+        .typing-dots span:nth-child(2) { animation-delay: 0.2s; }
+        .typing-dots span:nth-child(3) { animation-delay: 0.4s; }
+        @keyframes bounce {
+            0%, 80%, 100% { transform: scale(0.5); opacity: 0.3; }
+            40% { transform: scale(1); opacity: 1; }
+        }
+
+        /* ==================== WELCOME ==================== */
+        .welcome-wrapper {
+            flex: 1;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 20px;
+        }
+        .welcome { text-align: center; max-width: 480px; }
+        .welcome-logo {
+            width: 72px; height: 72px;
+            margin: 0 auto 16px;
+            background: var(--accent);
+            border-radius: 20px;
+            display: flex; align-items: center; justify-content: center;
+            color: #fff;
+            font-size: 32px;
+            font-weight: 700;
+            box-shadow: 0 8px 24px rgba(13,148,136,0.25);
+        }
+        .welcome h2 { font-size: 22px; font-weight: 700; margin-bottom: 8px; color: var(--text-primary); }
+        .welcome p { color: var(--text-secondary); font-size: 14px; line-height: 1.6; margin-bottom: 20px; }
+
+        .example-chips {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 8px;
+            justify-content: center;
+        }
+        .example-chip {
+            padding: 8px 16px;
+            border: 1px solid var(--border);
+            border-radius: 20px;
+            font-size: 13px;
+            cursor: pointer;
+            background: var(--bg-elevated);
+            transition: all var(--transition);
+            color: var(--text-primary);
+            font-family: inherit;
+        }
+        .example-chip:hover { border-color: var(--accent); background: var(--accent-light); color: var(--accent); }
+
+        /* ==================== INPUT AREA ==================== */
+        .input-area {
+            padding: 0 20px 16px;
+            flex-shrink: 0;
+        }
+        .input-inner { max-width: 768px; margin: 0 auto; }
+        .image-preview-area {
+            display: flex;
+            gap: 8px;
+            flex-wrap: wrap;
+            margin-bottom: 8px;
+            padding: 0 4px;
+        }
+        .image-preview-area .preview-thumb {
+            position: relative;
+            width: 56px; height: 56px;
+            border-radius: var(--radius-sm);
+            overflow: hidden;
+            border: 1px solid var(--border);
+            box-shadow: var(--shadow-sm);
+        }
+        .image-preview-area .preview-thumb img {
+            width: 100%; height: 100%;
+            object-fit: cover;
+        }
+        .image-preview-area .preview-thumb .remove-btn {
+            position: absolute;
+            top: -4px; right: -4px;
+            width: 18px; height: 18px;
+            border-radius: 50%;
+            background: #ef4444;
+            color: #fff;
+            border: 2px solid var(--bg-elevated);
+            font-size: 10px;
+            cursor: pointer;
+            display: flex; align-items: center; justify-content: center;
+            line-height: 1;
+        }
+        .input-wrapper {
+            display: flex;
+            align-items: flex-end;
+            gap: 8px;
+            background: var(--bg-elevated);
+            border: 1px solid var(--border);
+            border-radius: var(--radius-lg);
+            padding: 6px 10px;
+            transition: border-color var(--transition), box-shadow var(--transition);
+            box-shadow: var(--shadow-sm);
+        }
+        .input-wrapper:focus-within {
+            border-color: var(--accent);
+            box-shadow: 0 0 0 3px rgba(13,148,136,0.1);
+        }
+        .input-wrapper textarea {
+            flex: 1;
+            border: none;
+            background: transparent;
+            resize: none;
+            font-size: 14px;
+            font-family: inherit;
+            line-height: 1.5;
+            max-height: 150px;
+            outline: none;
+            padding: 6px 0;
+            color: var(--text-primary);
+        }
+        .input-wrapper textarea::placeholder { color: var(--text-tertiary); }
+
+        .input-btn {
+            width: 34px; height: 34px;
+            border: none;
+            border-radius: var(--radius-sm);
+            cursor: pointer;
+            display: flex; align-items: center; justify-content: center;
+            transition: all var(--transition);
+            flex-shrink: 0;
+        }
+        .input-btn.attach-btn { background: transparent; color: var(--text-tertiary); }
+        .input-btn.attach-btn:hover { background: var(--bg-secondary); color: var(--text-primary); }
+        .input-btn.attach-btn svg { width: 20px; height: 20px; }
+        .input-btn.send-btn {
+            background: var(--accent);
+            color: #fff;
+            border-radius: 50%;
+            width: 36px; height: 36px;
+        }
+        .input-btn.send-btn:hover { background: var(--accent-hover); transform: scale(1.05); }
+        .input-btn.send-btn:disabled { background: var(--border); cursor: not-allowed; transform: none; }
+        .input-btn.send-btn svg { width: 18px; height: 18px; }
+
+        .input-hint {
+            text-align: center;
+            font-size: 11px;
+            color: var(--text-tertiary);
+            margin-top: 8px;
+        }
+
+        /* ==================== RESPONSIVE ==================== */
+        @media (max-width: 768px) {
+            .sidebar {
+                position: fixed; left: 0; top: 0; bottom: 0;
+                transform: translateX(-100%);
+                box-shadow: var(--shadow-lg);
+            }
+            .sidebar.open { transform: translateX(0); width: 300px; }
+            .sidebar.collapsed { width: 300px; transform: translateX(-100%); }
+            .chat-inner { padding: 12px 16px 32px; }
+            .msg { gap: 8px; }
+            .input-area { padding: 0 12px 12px; }
+            .sidebar-overlay {
+                display: none;
+                position: fixed; inset: 0;
+                background: rgba(0,0,0,0.4);
+                z-index: 40;
+            }
+            .sidebar-overlay.open { display: block; }
+        }
+        @media (min-width: 769px) {
+            .sidebar-overlay { display: none !important; }
+        }
+
+        /* toast */
+        .toast {
+            position: fixed;
+            bottom: 80px;
+            left: 50%;
+            transform: translateX(-50%);
+            background: var(--text-primary);
+            color: var(--bg-primary);
+            padding: 8px 20px;
+            border-radius: 20px;
+            font-size: 13px;
+            z-index: 1000;
+            animation: toastIn 0.3s ease, toastOut 0.3s ease 1.7s;
+            pointer-events: none;
+        }
+        @keyframes toastIn { from { opacity: 0; transform: translateX(-50%) translateY(10px); } to { opacity: 1; transform: translateX(-50%) translateY(0); } }
+        @keyframes toastOut { from { opacity: 1; } to { opacity: 0; } }
+    </style>
+</head>
+<body>
+
+<div class="sidebar-overlay" id="sidebarOverlay" onclick="closeSidebar()"></div>
+
+<!-- ==================== SIDEBAR ==================== -->
+<aside class="sidebar" id="sidebar">
+    <div class="sidebar-system">
+        <div class="sidebar-system-logo">💊</div>
+        <div class="sidebar-system-info">
+            <div class="sidebar-system-name">PillMate</div>
+            <div class="sidebar-system-meta">CLIP ViT-B/32 · GLM-4-Flash</div>
+        </div>
+    </div>
+    <div class="sidebar-top">
+        <button class="btn-new-chat" onclick="newConversation()">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg>
+            新对话
+        </button>
+    </div>
+    <div class="sidebar-conversations" id="conversationList">
+        <div class="no-conversations" id="noConvs">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg>
+            <span>暂无对话</span>
+        </div>
+    </div>
+    <div class="sidebar-bottom">
+        <div class="user-avatar-svg">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>
+        </div>
+        <div class="user-info">
+            <div class="user-name">用户</div>
+            <div class="user-email">家庭用药助手</div>
+        </div>
+        <button class="btn-theme-toggle" id="themeToggleBtn" onclick="toggleTheme()" title="切换主题">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" id="themeIcon"><circle cx="12" cy="12" r="5"/><line x1="12" y1="1" x2="12" y2="3"/><line x1="12" y1="21" x2="12" y2="23"/><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/><line x1="1" y1="12" x2="3" y2="12"/><line x1="21" y1="12" x2="23" y2="12"/><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/></svg>
+        </button>
+    </div>
+</aside>
+
+<!-- ==================== MAIN ==================== -->
+<main class="main">
+    <header class="chat-header">
+        <button class="btn-toggle-sidebar" onclick="toggleSidebar()">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="18" x2="21" y2="18"/></svg>
+        </button>
+        <span class="header-title" id="headerTitle">PillMate 家庭用药助手</span>
+        <div class="header-right">
+            <span class="header-badge" id="drugCountBadge">-- 种药物已索引</span>
+            <div class="header-logo">
+                <div class="header-logo-img">💊</div>
+                <span class="header-logo-text">PillMate</span>
+            </div>
+        </div>
+    </header>
+
+    <div class="chat-messages" id="chatMessages">
+        <div class="chat-inner" id="chatInner">
+            <div class="welcome-wrapper" id="welcomeScreen">
+                <div class="welcome">
+                    <div class="welcome-logo">💊</div>
+                    <h2>有什么用药问题需要帮助？</h2>
+                    <p>上传药片图片或输入药物名称，获取基于 FDA 官方说明书的专业用药建议</p>
+                    <div class="example-chips">
+                        <button class="example-chip" onclick="quickAsk('Naproxen 萘普生是什么药？有什么副作用？')">Naproxen 萘普生</button>
+                        <button class="example-chip" onclick="quickAsk('布洛芬 Ibuprofen 的用法用量和注意事项')">Ibuprofen 布洛芬</button>
+                        <button class="example-chip" onclick="quickAsk('Metformin 二甲双胍的作用机制是什么？')">Metformin 二甲双胍</button>
+                        <button class="example-chip" onclick="document.getElementById('imageInput').click()">
+                            <svg style="width:14px;height:14px;vertical-align:-2px;margin-right:4px" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><polyline points="21 15 16 10 5 21"/></svg>
+                            识别药片图片
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="input-area">
+        <div class="input-inner">
+            <div class="image-preview-area" id="imagePreviewArea"></div>
+            <div class="input-wrapper">
+                <button class="input-btn attach-btn" title="上传图片" onclick="document.getElementById('imageInput').click()">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><polyline points="21 15 16 10 5 21"/></svg>
+                </button>
+                <textarea id="queryInput" rows="1"
+                    placeholder="输入药物名称或问题，Enter 发送 / Shift+Enter 换行..."
+                    onkeydown="handleKeyDown(event)"
+                    oninput="autoResize(this)"></textarea>
+                <input type="file" id="imageInput" accept="image/*" style="display:none" onchange="handleImageSelect(this.files)" multiple>
+                <button class="input-btn send-btn" id="sendBtn" onclick="submitQuery()" disabled title="发送">
+                    <svg viewBox="0 0 24 24" fill="currentColor"><path d="M2.01 21L23 12 2.01 3 2 10l15 2-15 2z"/></svg>
+                </button>
+            </div>
+            <div class="input-hint">PillMate 仅供参考，请以医嘱和药品说明书为准</div>
+        </div>
+    </div>
+</main>
+
+<script>
+marked.setOptions({ breaks: true, gfm: true, tables: true });
+
+const STORAGE_KEY = 'pillmate_conversations';
+const STORAGE_ACTIVE_KEY = 'pillmate_active_conv';
+const THEME_KEY = 'pillmate_theme';
+
+let conversations = [];
+let activeConversationId = null;
+let isProcessing = false;
+let selectedImages = [];
+let selectedImagesB64 = [];
+
+function getActiveConversation() {
+    return conversations.find(c => c.id === activeConversationId) || null;
+}
+function getActiveMessages() {
+    const conv = getActiveConversation();
+    return conv ? conv.messages : [];
+}
+
+function saveState() {
+    try {
+        localStorage.setItem(STORAGE_KEY, JSON.stringify(conversations));
+        localStorage.setItem(STORAGE_ACTIVE_KEY, activeConversationId || '');
+    } catch(e) {}
+}
+function loadState() {
+    try {
+        const raw = localStorage.getItem(STORAGE_KEY);
+        if (raw) conversations = JSON.parse(raw);
+        activeConversationId = localStorage.getItem(STORAGE_ACTIVE_KEY) || null;
+        if (activeConversationId && !conversations.find(c => c.id === activeConversationId)) {
+            activeConversationId = null;
+        }
+        if (!activeConversationId && conversations.length > 0) {
+            activeConversationId = conversations[0].id;
+        }
+        const theme = localStorage.getItem(THEME_KEY) || 'light';
+        document.documentElement.setAttribute('data-theme', theme);
+        updateThemeIcon(theme);
+    } catch(e) {
+        conversations = [];
+        activeConversationId = null;
+    }
+}
+
+function generateId() { return 'conv_' + Date.now() + '_' + Math.random().toString(36).slice(2,8); }
+function msgId() { return 'msg_' + Date.now() + '_' + Math.random().toString(36).slice(2,6); }
+
+function newConversation() {
+    const conv = { id: generateId(), title: '新对话', messages: [], createdAt: Date.now(), updatedAt: Date.now() };
+    conversations.unshift(conv);
+    activeConversationId = conv.id;
+    clearImage();
+    saveState();
+    renderAll();
+}
+function switchConversation(id) {
+    activeConversationId = id;
+    clearImage();
+    saveState();
+    renderAll();
+}
+function deleteConversation(id, e) {
+    e.stopPropagation();
+    conversations = conversations.filter(c => c.id !== id);
+    if (activeConversationId === id) {
+        activeConversationId = conversations.length > 0 ? conversations[0].id : null;
+    }
+    saveState();
+    renderAll();
+}
+function updateConversationTitle() {
+    const conv = getActiveConversation();
+    if (!conv) return;
+    const userMsgs = conv.messages.filter(m => m.role === 'user');
+    if (userMsgs.length > 0) {
+        const last = userMsgs[userMsgs.length - 1];
+        conv.title = last.content.length > 28 ? last.content.slice(0, 28) + '...' : last.content;
+    }
+    conv.updatedAt = Date.now();
+}
+
+// ==================== THEME ====================
+function toggleTheme() {
+    const current = document.documentElement.getAttribute('data-theme');
+    const next = current === 'dark' ? 'light' : 'dark';
+    document.documentElement.setAttribute('data-theme', next);
+    localStorage.setItem(THEME_KEY, next);
+    updateThemeIcon(next);
+    showToast(next === 'dark' ? '已切换为暗色模式' : '已切换为亮色模式');
+}
+function updateThemeIcon(theme) {
+    const icon = document.getElementById('themeIcon');
+    if (theme === 'dark') {
+        icon.innerHTML = '<path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/>';
+    } else {
+        icon.innerHTML = '<circle cx="12" cy="12" r="5"/><line x1="12" y1="1" x2="12" y2="3"/><line x1="12" y1="21" x2="12" y2="23"/><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/><line x1="1" y1="12" x2="3" y2="12"/><line x1="21" y1="12" x2="23" y2="12"/><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/>';
+    }
+}
+
+// ==================== TOAST ====================
+function showToast(msg) {
+    const el = document.createElement('div');
+    el.className = 'toast';
+    el.textContent = msg;
+    document.body.appendChild(el);
+    setTimeout(() => el.remove(), 2000);
+}
+
+// ==================== EXPORT ====================
+function exportConversationById(convId) {
+    const conv = conversations.find(c => c.id === convId);
+    if (!conv || conv.messages.length === 0) {
+        showToast('该对话为空，无法导出');
+        return;
+    }
+    let md = '# PillMate 对话记录\n\n';
+    md += `时间: ${new Date(conv.createdAt).toLocaleString()}\n\n---\n\n`;
+    for (const m of conv.messages) {
+        md += m.role === 'user' ? '### 👤 用户\n\n' : '### 💊 PillMate\n\n';
+        md += m.content + '\n\n';
+    }
+    md += '\n> 由 PillMate 家庭用药 MRAG 助手生成';
+    const blob = new Blob([md], {type: 'text/markdown'});
+    const a = document.createElement('a');
+    a.href = URL.createObjectURL(blob);
+    a.download = `pillmate_${conv.id}_${new Date().toISOString().slice(0,10)}.md`;
+    a.click();
+    URL.revokeObjectURL(a.href);
+    showToast('对话已导出为 Markdown');
+}
+
+// ==================== INIT ====================
+loadState();
+fetch('/health').then(r => r.json()).then(d => {
+    if (d.documents) document.getElementById('drugCountBadge').textContent = d.documents + ' 种药物已索引';
+}).catch(() => {});
+
+function toggleSidebar() {
+    const sidebar = document.getElementById('sidebar');
+    if (window.innerWidth <= 768) {
+        sidebar.classList.toggle('open');
+        document.getElementById('sidebarOverlay').classList.toggle('open');
+    } else {
+        sidebar.classList.toggle('collapsed');
+    }
+}
+function closeSidebar() {
+    document.getElementById('sidebar').classList.remove('open');
+    document.getElementById('sidebarOverlay').classList.remove('open');
+}
+
+function renderConversationList() {
+    const container = document.getElementById('conversationList');
+    const noConvs = document.getElementById('noConvs');
+    noConvs.style.display = conversations.length === 0 ? 'flex' : 'none';
+    container.querySelectorAll('.conv-item').forEach(el => el.remove());
+    conversations.forEach(conv => {
+        const el = document.createElement('div');
+        el.className = 'conv-item' + (conv.id === activeConversationId ? ' active' : '');
+        el.onclick = () => switchConversation(conv.id);
+        el.innerHTML = `
+            <svg style="width:15px;height:15px;flex-shrink:0;opacity:0.5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg>
+            <span class="conv-item-title">${escapeHtml(conv.title)}</span>
+            <span class="conv-item-time">${formatTime(conv.updatedAt || conv.createdAt)}</span>
+            <button class="conv-item-export" title="导出"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg></button>
+            <button class="conv-item-delete" title="删除"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="3 6 5 6 21 6"/><path d="M19 6v14a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V6m3 0V4a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2"/></svg></button>`;
+        el.querySelector('.conv-item-export').onclick = (e) => { e.stopPropagation(); exportConversationById(conv.id); };
+        el.querySelector('.conv-item-delete').onclick = (e) => deleteConversation(conv.id, e);
+        container.appendChild(el);
+    });
+}
+function formatTime(ts) {
+    const d = new Date(ts), diff = Date.now() - d;
+    if (diff < 60000) return '刚刚';
+    if (diff < 3600000) return Math.floor(diff / 60000) + '分钟前';
+    if (diff < 86400000) return Math.floor(diff / 3600000) + '小时前';
+    if (diff < 604800000) return Math.floor(diff / 86400000) + '天前';
+    return (d.getMonth() + 1) + '/' + d.getDate();
+}
+
+// ==================== MESSAGES ====================
+function renderMessages() {
+    const inner = document.getElementById('chatInner');
+    const welcome = document.getElementById('welcomeScreen');
+    const msgs = getActiveMessages();
+    welcome.style.display = msgs.length === 0 ? '' : 'none';
+    inner.querySelectorAll('.msg').forEach(el => el.remove());
+    msgs.forEach((m, i) => {
+        const el = document.createElement('div');
+        el.className = 'msg ' + m.role;
+        el.id = 'msg-' + m.id;
+        el.innerHTML = buildMessageHTML(m, i);
+        inner.appendChild(el);
+    });
+    const typingEl = inner.querySelector('.msg.typing-indicator');
+    if (typingEl) inner.appendChild(typingEl);
+    updateHeaderTitle();
+}
+function updateHeaderTitle() {
+    const conv = getActiveConversation();
+    document.getElementById('headerTitle').textContent = conv ? conv.title : 'PillMate 家庭用药助手';
+}
+
+function buildMessageHTML(m, idx) {
+    let avatarHtml = m.role === 'user'
+        ? `<div class="msg-avatar"><svg class="avatar-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg></div>`
+        : `<div class="msg-avatar"><svg class="avatar-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="8.5" cy="12" r="2.5"/><circle cx="15.5" cy="12" r="2.5"/><line x1="11" y1="14" x2="13" y2="14"/></svg></div>`;
+    let bodyHtml;
+    if (m.role === 'user') {
+        let imgHtml = '';
+        const images = Array.isArray(m.imageB64) ? m.imageB64 : (m.imageB64 ? [m.imageB64] : []);
+        for (const b64 of images) imgHtml += `<img class="msg-image-preview" src="${b64}" alt="上传的药片图片">`;
+        bodyHtml = `<div class="msg-bubble">${imgHtml}${escapeHtml(m.content)}</div>`;
+    } else {
+        bodyHtml = `<div class="msg-bubble"><div class="markdown-body">${marked.parse(m.content)}</div></div>`;
+        if (m.retrieved && m.retrieved.length > 0) bodyHtml += buildDrugCards(m.retrieved);
+        bodyHtml += `<div class="msg-actions">
+            <button class="msg-action-btn" onclick="copyMessage('${m.id}')" title="复制">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg> 复制</button>
+            <button class="msg-action-btn" onclick="regenerateResponse('${m.id}')" title="重新生成">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="23 4 23 10 17 10"/><path d="M20.49 15a9 9 0 1 1-2.12-9.36L23 10"/></svg> 重新生成</button>
+            <button class="msg-action-btn danger" onclick="deleteMessage('${m.id}')" title="删除">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="3 6 5 6 21 6"/><path d="M19 6v14a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V6m3 0V4a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2"/></svg> 删除</button>
+        </div>`;
+    }
+    return `${avatarHtml}<div class="msg-content">${bodyHtml}</div>`;
+}
+
+function buildDrugCards(retrieved) {
+    let html = '<div class="drug-cards">';
+    retrieved.forEach(d => {
+        const simVal = d.similarity ? (d.similarity * 100) : 0;
+        const simCls = simVal >= 80 ? 'high' : simVal >= 60 ? 'mid' : 'low';
+        const pp = d.physical_properties?.[0] || {};
+        const name = d.drug_name || d.generic_name || d.ndc || '?';
+        html += `<div class="drug-card"><span class="sim-badge ${simCls}">${simVal.toFixed(1)}%</span>
+            <div class="drug-name">${escapeHtml(name)}</div>
+            <div class="drug-meta">NDC: ${d.ndc}${d.generic_name ? ' | ' + escapeHtml(d.generic_name) : ''}</div>`;
+        if (pp.color || pp.shape || pp.imprint) {
+            html += '<div class="drug-phys">';
+            if (pp.color) html += `<span class="phys-color">${escapeHtml(pp.color)}</span>`;
+            if (pp.shape) html += `<span class="phys-shape">${escapeHtml(pp.shape)}</span>`;
+            if (pp.imprint) html += `<span class="phys-imprint">印记: ${escapeHtml(pp.imprint)}</span>`;
+            html += '</div>';
+        }
+        html += '</div>';
+    });
+    return html + '</div>';
+}
+
+function addMessageToDOM(role, content, imageB64, retrieved) {
+    const conv = getActiveConversation();
+    if (!conv) { newConversation(); return addMessageToDOM(role, content, imageB64, retrieved); }
+    const msg = { role, content, imageB64: imageB64 || null, retrieved: retrieved || [], id: msgId() };
+    conv.messages.push(msg);
+    updateConversationTitle();
+    saveState();
+    renderAll();
+    scrollToBottom();
+}
+
+function insertMessageAtIndex(role, content, imageB64, retrieved, index) {
+    const conv = getActiveConversation();
+    if (!conv) return;
+    const msg = { role, content, imageB64: imageB64 || null, retrieved: retrieved || [], id: msgId() };
+    conv.messages.splice(index, 0, msg);
+    updateConversationTitle();
+    saveState();
+    renderAll();
+}
+
+function deleteMessage(msgId) {
+    const conv = getActiveConversation();
+    if (!conv) return;
+    const idx = conv.messages.findIndex(m => m.id === msgId);
+    if (idx === -1) return;
+    const msg = conv.messages[idx];
+    // 如果删AI回复，同时删除前面的用户提问
+    if (msg.role === 'assistant' && idx > 0 && conv.messages[idx - 1].role === 'user') {
+        conv.messages.splice(idx - 1, 2);
+    }
+    // 如果删用户消息，同时删紧随的AI回复
+    else if (msg.role === 'user' && idx < conv.messages.length - 1 && conv.messages[idx + 1].role === 'assistant') {
+        conv.messages.splice(idx, 2);
+    } else {
+        conv.messages.splice(idx, 1);
+    }
+    saveState();
+    renderAll();
+}
+
+function addTypingIndicator() {
+    const inner = document.getElementById('chatInner');
+    if (inner.querySelector('.msg.typing-indicator')) return;
+    const el = document.createElement('div');
+    el.className = 'msg assistant typing-indicator';
+    el.innerHTML = `<div class="msg-avatar"><svg class="avatar-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="8.5" cy="12" r="2.5"/><circle cx="15.5" cy="12" r="2.5"/><line x1="11" y1="14" x2="13" y2="14"/></svg></div><div class="msg-content"><div class="msg-bubble"><div class="typing-dots"><span></span><span></span><span></span></div></div></div>`;
+    inner.appendChild(el);
+    scrollToBottom();
+}
+function removeTypingIndicator() {
+    const el = document.querySelector('.msg.typing-indicator');
+    if (el) el.remove();
+}
+
+function renderAll() {
+    renderConversationList();
+    renderMessages();
+    updateSendButton();
+}
+
+// ==================== IMAGE ====================
+function handleImageSelect(files) {
+    if (!files || !files.length) return;
+    for (const file of files) {
+        if (!file.type.startsWith('image/')) continue;
+        const reader = new FileReader();
+        reader.onload = e => {
+            selectedImages.push(file);
+            selectedImagesB64.push(e.target.result);
+            renderImagePreview();
+            updateSendButton();
+        };
+        reader.readAsDataURL(file);
+    }
+    document.getElementById('imageInput').value = '';
+}
+function renderImagePreview() {
+    const area = document.getElementById('imagePreviewArea');
+    if (selectedImagesB64.length === 0) { area.innerHTML = ''; return; }
+    area.innerHTML = selectedImagesB64.map((b64, i) => `<div class="preview-thumb"><img src="${b64}" alt="药片图片"><button class="remove-btn" onclick="removeImage(${i})">&#x2715;</button></div>`).join('');
+}
+function removeImage(index) { selectedImages.splice(index, 1); selectedImagesB64.splice(index, 1); renderImagePreview(); updateSendButton(); }
+function clearImage() { selectedImages = []; selectedImagesB64 = []; document.getElementById('imagePreviewArea').innerHTML = ''; document.getElementById('imageInput').value = ''; updateSendButton(); }
+
+// ==================== PASTE / DRAG ====================
+document.addEventListener('paste', e => {
+    if (document.activeElement !== document.getElementById('queryInput')) return;
+    for (const item of (e.clipboardData?.items || [])) {
+        if (item.type.startsWith('image/')) {
+            e.preventDefault();
+            const file = item.getAsFile();
+            const reader = new FileReader();
+            reader.onload = ev => { selectedImages.push(file); selectedImagesB64.push(ev.target.result); renderImagePreview(); updateSendButton(); };
+            reader.readAsDataURL(file);
+        }
+    }
+});
+const chatArea = document.getElementById('chatMessages');
+chatArea.addEventListener('dragover', e => { e.preventDefault(); });
+chatArea.addEventListener('drop', e => { e.preventDefault(); if (e.dataTransfer.files.length) handleImageSelect(e.dataTransfer.files); });
+
+// ==================== INPUT ====================
+function handleKeyDown(e) { if (e.key === 'Enter' && !e.shiftKey) { e.preventDefault(); submitQuery(); } }
+function autoResize(el) { el.style.height = 'auto'; el.style.height = Math.min(el.scrollHeight, 150) + 'px'; }
+function updateSendButton() { document.getElementById('sendBtn').disabled = !document.getElementById('queryInput').value.trim() && selectedImages.length === 0; }
+document.getElementById('queryInput').addEventListener('input', updateSendButton);
+function quickAsk(text) {
+    if (!getActiveConversation()) newConversation();
+    document.getElementById('queryInput').value = text;
+    autoResize(document.getElementById('queryInput'));
+    updateSendButton();
+    submitQuery();
+}
+
+// ==================== SUBMIT ====================
+async function submitQuery() {
+    if (isProcessing) return;
+    const text = document.getElementById('queryInput').value.trim();
+    if (!text && selectedImages.length === 0) return;
+    if (!getActiveConversation()) newConversation();
+    isProcessing = true;
+    document.getElementById('sendBtn').disabled = true;
+    const displayText = text || (selectedImages.length > 0 ? '请识别这些药片' : '');
+    addMessageToDOM('user', displayText, [...selectedImagesB64]);
+    document.getElementById('queryInput').value = '';
+    document.getElementById('queryInput').style.height = 'auto';
+    const imagesToUpload = [...selectedImages];
+    clearImage();
+    addTypingIndicator();
+    const form = new FormData();
+    form.append('query_text', text);
+    form.append('top_k', '5');
+    for (const img of imagesToUpload) form.append('images', img, img.name || 'image.png');
+    try {
+        const resp = await fetch('/query', { method: 'POST', body: form });
+        const data = await resp.json();
+        removeTypingIndicator();
+        addMessageToDOM('assistant', data.error ? '**发生错误**: ' + data.error : data.response, null, data.retrieved_drugs || []);
+    } catch (e) {
+        removeTypingIndicator();
+        addMessageToDOM('assistant', '**请求失败**: ' + e.message, null, []);
+    } finally { isProcessing = false; updateSendButton(); }
+}
+
+// ==================== COPY ====================
+function copyMessage(msgId) {
+    const conv = getActiveConversation();
+    if (!conv) return;
+    const msg = conv.messages.find(m => m.id === msgId);
+    if (!msg) return;
+    navigator.clipboard.writeText(msg.content).then(() => {
+        showToast('已复制到剪贴板');
+        const btn = document.querySelector(`#msg-${msgId} .msg-action-btn`);
+        if (btn) { btn.classList.add('copied'); setTimeout(() => btn.classList.remove('copied'), 1500); }
+    }).catch(() => {});
+}
+
+// ==================== REGENERATE (stays in place) ====================
+async function regenerateResponse(msgId) {
+    if (isProcessing) return;
+    const conv = getActiveConversation();
+    if (!conv) return;
+    const msgIndex = conv.messages.findIndex(m => m.id === msgId);
+    if (msgIndex === -1) return;
+    const userMsg = conv.messages[msgIndex - 1];
+    if (!userMsg || userMsg.role !== 'user') return;
+    conv.messages.splice(msgIndex, 1);
+    isProcessing = true;
+    addTypingIndicator();
+    const form = new FormData();
+    form.append('query_text', userMsg.content);
+    form.append('top_k', '5');
+    try {
+        const resp = await fetch('/query', { method: 'POST', body: form });
+        const data = await resp.json();
+        removeTypingIndicator();
+        insertMessageAtIndex('assistant', data.error ? '**发生错误**: ' + data.error : data.response, null, data.retrieved_drugs || [], msgIndex);
+    } catch (e) {
+        removeTypingIndicator();
+        insertMessageAtIndex('assistant', '**请求失败**: ' + e.message, null, [], msgIndex);
+    } finally { isProcessing = false; updateSendButton(); }
+}
+
+function scrollToBottom() {
+    requestAnimationFrame(() => {
+        const el = document.getElementById('chatMessages');
+        el.scrollTop = el.scrollHeight;
+    });
+}
+
+function escapeHtml(str) {
+    if (!str) return '';
+    const div = document.createElement('div');
+    div.textContent = str;
+    return div.innerHTML;
+}
+
+renderAll();
+</script>
+</body>
+</html>

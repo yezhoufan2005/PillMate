@@ -1,0 +1,48 @@
+{
+  "query_text": "孕妇能吃 Warfarin 华法林吗？有什么风险？",
+  "query_type": "text",
+  "top_k": 5,
+  "retrieved_drugs": [
+    {
+      "ndc": "51285-0524-02",
+      "drug_name": null,
+      "generic_name": "disulfiram",
+      "manufacturer": null,
+      "physical_properties": [],
+      "similarity": 0.757164716720581
+    },
+    {
+      "ndc": "00093-5215-01",
+      "drug_name": null,
+      "generic_name": "hydrochlorothiazide",
+      "manufacturer": null,
+      "physical_properties": [],
+      "similarity": 0.7536001205444336
+    },
+    {
+      "ndc": "00093-5213-01",
+      "drug_name": null,
+      "generic_name": "hydrochlorothiazide",
+      "manufacturer": null,
+      "physical_properties": [],
+      "similarity": 0.7536001205444336
+    },
+    {
+      "ndc": "00093-5214-01",
+      "drug_name": null,
+      "generic_name": "hydrochlorothiazide",
+      "manufacturer": null,
+      "physical_properties": [],
+      "similarity": 0.7536001205444336
+    },
+    {
+      "ndc": "00555-0588-01",
+      "drug_name": null,
+      "generic_name": "didanosine",
+      "manufacturer": null,
+      "physical_properties": [],
+      "similarity": 0.7497279644012451
+    }
+  ],
+  "response": "**推荐药物**: 华法林（Warfarin）\n\n**主要用途**: 华法林是一种抗凝药物，用于预防血栓形成和深静脉血栓（DVT）。\n\n**为什么推荐**: 华法林通过抑制血液凝固，从而预防血栓的形成。然而，对于孕妇来说，华法林的使用是有风险的。\n\n**适应症与用法用量**:\n- 华法林通常用于治疗或预防血栓形成，如深静脉血栓、肺栓塞和心脏瓣膜病等。\n- 用法用量需遵医嘱，通常根据患者的具体情况调整。\n\n**禁忌症与警告**:\n- 孕妇通常不建议使用华法林，因为它可能对胎儿造成伤害，包括流产、胎儿出血和胎儿死亡。\n- 在怀孕期间，特别是妊娠早期和晚期，使用华法林的风险增加。\n\n**常见副作用**:\n- 华法林可能引起出血，包括皮肤瘀斑、鼻出血、月经过多等。\n- 其他副作用可能包括头痛、恶心、呕吐等。\n\n**注意事项**:\n- 孕妇在使用任何药物前应咨询医生，特别是像华法林这样的抗凝药物。\n- 如果孕妇需要抗凝治疗，医生可能会考虑其他药物或治疗方法。\n\n> ⚠️ 以上信息仅供参考，不构成医疗建议。用药前请咨询医生或药师，仔细阅读药品说明书。如出现严重不良反应，请立即就医。"
+}

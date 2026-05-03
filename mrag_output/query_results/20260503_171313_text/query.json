@@ -1,0 +1,48 @@
+{
+  "query_text": "Warfarin Sodium",
+  "query_type": "text",
+  "top_k": 5,
+  "retrieved_drugs": [
+    {
+      "ndc": "00093-5215-01",
+      "drug_name": null,
+      "generic_name": "hydrochlorothiazide",
+      "manufacturer": null,
+      "physical_properties": [],
+      "similarity": 0.8327913284301758
+    },
+    {
+      "ndc": "00093-5213-01",
+      "drug_name": null,
+      "generic_name": "hydrochlorothiazide",
+      "manufacturer": null,
+      "physical_properties": [],
+      "similarity": 0.8327913284301758
+    },
+    {
+      "ndc": "00093-5214-01",
+      "drug_name": null,
+      "generic_name": "hydrochlorothiazide",
+      "manufacturer": null,
+      "physical_properties": [],
+      "similarity": 0.8327913284301758
+    },
+    {
+      "ndc": "00555-0588-01",
+      "drug_name": null,
+      "generic_name": "didanosine",
+      "manufacturer": null,
+      "physical_properties": [],
+      "similarity": 0.8262166976928711
+    },
+    {
+      "ndc": "51285-0524-02",
+      "drug_name": null,
+      "generic_name": "disulfiram",
+      "manufacturer": null,
+      "physical_properties": [],
+      "similarity": 0.8248464465141296
+    }
+  ],
+  "response": "**推荐药物**: Warfarin Sodium\n**主要用途**: Warfarin Sodium是一种抗凝药物，用于预防深静脉血栓（DVT）和肺栓塞（PE）的形成，以及用于治疗某些心脏疾病，如房颤（atrial fibrillation）和心脏瓣膜置换术后。\n\n**为什么推荐**: Warfarin Sodium通过抑制维生素K依赖的凝血因子，从而减缓血液凝固过程，适用于需要抗凝治疗的情况。\n\n**适应症与用法用量**:\n- 用于预防深静脉血栓和肺栓塞的形成。\n- 用于治疗房颤和心脏瓣膜置换术后，以减少血栓形成的风险。\n- 用法用量需遵医嘱，通常根据患者的具体情况调整剂量。\n\n**禁忌症与警告**:\n- 对Warfarin Sodium或其成分过敏者禁用。\n- 某些严重肝脏疾病、出血性疾病、维生素K缺乏症等患者禁用。\n- 使用Warfarin Sodium期间应避免剧烈运动和参与高风险活动，以防出血。\n\n**常见副作用**:\n- 出血倾向，如瘀斑、鼻出血、牙龈出血等。\n- 肌肉疼痛、关节疼痛。\n- 消化不良、恶心、呕吐。\n\n**注意事项**:\n- 使用Warfarin Sodium期间应定期监测凝血酶原时间（PT）和国际标准化比值（INR）。\n- 饮食中维生素K的摄入量应保持稳定，避免突然增加或减少。\n- 与其他药物或补充剂同时使用时，可能影响其效果，应告知医生所有正在使用的药物。\n\n> ⚠️ 以上信息仅供参考，不构成医疗建议。用药前请咨询医生或药师，仔细阅读药品说明书。如出现严重不良反应，请立即就医。"
+}

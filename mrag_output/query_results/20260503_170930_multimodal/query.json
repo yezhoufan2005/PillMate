@@ -1,0 +1,103 @@
+{
+  "query_text": "这是什么药？",
+  "query_type": "multimodal",
+  "top_k": 5,
+  "retrieved_drugs": [
+    {
+      "ndc": "00093-7222-98",
+      "drug_name": "Fosinopril Sodium Tablets, USP",
+      "generic_name": "fosinopril",
+      "manufacturer": "Chartwell RX, LLC",
+      "physical_properties": [
+        {
+          "strength": "10 mg",
+          "color": "white",
+          "shape": "round",
+          "scored": true,
+          "imprint": ""
+        }
+      ],
+      "similarity": 0.8122607797384261
+    },
+    {
+      "ndc": "63010-0027-70",
+      "drug_name": "These highlights do not include all the information needed to use VIRACEPT safely and effectively. See full prescribing information for VIRACEPT.",
+      "generic_name": "nelfinavir",
+      "manufacturer": "AGOURON",
+      "physical_properties": [
+        {
+          "color": "blue",
+          "shape": "capsule",
+          "imprint": ""
+        }
+      ],
+      "similarity": 0.7966970682144164
+    },
+    {
+      "ndc": "00093-1062-01",
+      "drug_name": "Sotalol Hydrochloride",
+      "generic_name": "sotalol",
+      "manufacturer": "Bryant Ranch Prepack",
+      "physical_properties": [
+        {
+          "color": "red",
+          "shape": "capsule",
+          "scored": true,
+          "imprint": ""
+        }
+      ],
+      "similarity": 0.7929175376892089
+    },
+    {
+      "ndc": "00093-7369-56",
+      "drug_name": "",
+      "generic_name": "hydrochlorothiazide",
+      "manufacturer": "REMEDYREPACK INC.",
+      "physical_properties": [
+        {
+          "color": "white",
+          "imprint": ""
+        }
+      ],
+      "similarity": 0.7913999497890473
+    },
+    {
+      "ndc": "00591-0406-01",
+      "drug_name": "Lisinopril",
+      "generic_name": "lisinopril",
+      "manufacturer": "A-S Medication Solutions",
+      "physical_properties": [
+        {
+          "strength": "2.5 mg",
+          "imprint": "H / 145"
+        },
+        {
+          "strength": "2.5 mg",
+          "imprint": "H / 145"
+        },
+        {
+          "strength": "5 mg",
+          "color": "yellow",
+          "imprint": "H / 145"
+        },
+        {
+          "strength": "10 mg",
+          "color": "red",
+          "imprint": "H / 145"
+        },
+        {
+          "strength": "30 mg",
+          "color": "red",
+          "imprint": "H / 145"
+        },
+        {
+          "strength": "40 mg",
+          "color": "yellow",
+          "imprint": "H / 145"
+        }
+      ],
+      "similarity": 0.7889752745628357
+    }
+  ],
+  "response": "**图片1识别结果**: Fosinopril Sodium Tablets, USP\n**主要用途**: 用于治疗高血压，可能单独使用或与噻嗪类利尿剂联合使用。\n\n**适应症与用法用量**\n- 用于治疗高血压。\n- 可单独使用或与噻嗪类利尿剂联合使用。\n- 用于心力衰竭的辅助治疗，当与包括利尿剂（无论是否与洋地黄联合使用）的常规治疗联合使用时。\n\n**禁忌症与警告**\n- 在考虑使用 fosinopril sodium tablets 时，应注意在对照试验中，ACE 抑制剂对血压的影响在黑人患者中低于非黑人患者。\n- ACE 抑制剂（有足够数据的）在黑人患者中引起血管性水肿的比率高于非黑人患者。\n\n**常见副作用**\n- 常见的副作用包括头痛、疲劳、咳嗽、头晕和低血压。\n\n**注意事项**\n- 在开始 fosinopril sodium tablets 治疗之前，如果患者目前正在服用利尿剂，可能会发生症状性低血压。\n- 使用 fosinopril sodium tablets 与钾补充剂、含钾盐代用品或保钾利尿剂同时使用可能导致血清钾水平升高。\n\n> ⚠️ 以上信息仅供参考，不构成医疗建议。用药前请咨询医生或药师，仔细阅读药品说明书。如出现严重不良反应，请立即就医。"
+}

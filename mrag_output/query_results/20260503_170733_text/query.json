@@ -1,0 +1,48 @@
+{
+  "query_text": "Metformin 二甲双胍",
+  "query_type": "text",
+  "top_k": 5,
+  "retrieved_drugs": [
+    {
+      "ndc": "00093-5215-01",
+      "drug_name": null,
+      "generic_name": "hydrochlorothiazide",
+      "manufacturer": null,
+      "physical_properties": [],
+      "similarity": 0.7626752257347107
+    },
+    {
+      "ndc": "00093-5213-01",
+      "drug_name": null,
+      "generic_name": "hydrochlorothiazide",
+      "manufacturer": null,
+      "physical_properties": [],
+      "similarity": 0.7626752257347107
+    },
+    {
+      "ndc": "00093-5214-01",
+      "drug_name": null,
+      "generic_name": "hydrochlorothiazide",
+      "manufacturer": null,
+      "physical_properties": [],
+      "similarity": 0.7626752257347107
+    },
+    {
+      "ndc": "51285-0063-90",
+      "drug_name": null,
+      "generic_name": "estradiol",
+      "manufacturer": null,
+      "physical_properties": [],
+      "similarity": 0.7572838068008423
+    },
+    {
+      "ndc": "99207-0467-30",
+      "drug_name": null,
+      "generic_name": "minocycline",
+      "manufacturer": null,
+      "physical_properties": [],
+      "similarity": 0.7482231855392456
+    }
+  ],
+  "response": "**推荐药物**: 二甲双胍（Metformin）\n\n**主要用途**: 二甲双胍主要用于治疗2型糖尿病，通过减少肝脏产生的葡萄糖和改善身体对胰岛素的敏感性来降低血糖水平。\n\n**为什么推荐**: 二甲双胍是2型糖尿病的一线治疗药物，适用于大多数2型糖尿病患者。\n\n**适应症与用法用量**:\n- 适应症：用于治疗2型糖尿病，通常与饮食和运动结合使用。\n- 用法用量：通常初始剂量为每日一次500毫克，或每日两次250毫克，根据血糖水平和医生的建议进行调整。\n\n**禁忌症与警告**:\n- 禁忌症：对二甲双胍或药物成分过敏的患者不应使用。\n- 警告：在开始使用二甲双胍之前，应告知医生有关任何其他医疗条件，特别是肾功能损害、肝功能损害或心脏问题。\n\n**常见副作用**:\n- 常见的副作用包括腹泻、胃痛、恶心和呕吐。\n\n**注意事项**:\n- 在用药期间应定期监测血糖水平。\n- 饮食和运动也是治疗2型糖尿病的重要组成部分。\n- 如出现严重副作用或血糖控制不佳，应立即咨询医生。\n\n⚠️ 以上信息仅供参考，不构成医疗建议。用药前请咨询医生或药师，仔细阅读药品说明书。如出现严重不良反应，请立即就医。\n\n> ⚠️ 以上信息仅供参考，不构成医疗建议。用药前请咨询医生或药师，仔细阅读药品说明书。如出现严重不良反应，请立即就医。"
+}
