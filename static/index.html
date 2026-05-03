@@ -3,7 +3,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>PillMate - 家庭用药MRAG助手</title>
+    <title>PillMate 家庭用药MRAG助手</title>
+    <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>💊</text></svg>">
     <script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
     <style>
         :root {
@@ -100,7 +101,7 @@
         }
         .sidebar-system-info { min-width: 0; }
         .sidebar-system-name { font-size: 14px; font-weight: 700; color: var(--text-primary); }
-        .sidebar-system-meta { font-size: 10px; color: var(--text-tertiary); margin-top: 2px; }
+        .sidebar-system-meta { font-size: 11px; color: var(--text-tertiary); margin-top: 2px; }
 
         .sidebar-top {
             padding: 4px 12px 8px;
@@ -109,6 +110,7 @@
             width: 100%;
             display: flex;
             align-items: center;
+            justify-content: center;
             gap: 8px;
             padding: 10px 14px;
             border-radius: var(--radius-sm);
@@ -154,7 +156,13 @@
             white-space: nowrap;
             font-size: 13px;
         }
-        .conv-item-time { font-size: 11px; opacity: 0.5; flex-shrink: 0; }
+        .conv-item-time { 
+            font-size: 11px; 
+            opacity: 0.5; 
+            flex-shrink: 0;
+            transition: opacity var(--transition);
+        }
+        .conv-item:hover .conv-item-time { opacity: 0; }
         .conv-item-delete {
             opacity: 0;
             width: 24px; height: 24px;
@@ -165,6 +173,8 @@
             display: flex; align-items: center; justify-content: center;
             transition: all var(--transition);
             flex-shrink: 0;
+            position: absolute;
+            right: 36px;
         }
         .conv-item:hover .conv-item-delete { opacity: 0.6; }
         .conv-item-delete:hover { opacity: 1 !important; background: rgba(239,68,68,0.15); color: #ef4444; }
@@ -180,9 +190,11 @@
             display: flex; align-items: center; justify-content: center;
             transition: all var(--transition);
             flex-shrink: 0;
+            position: absolute;
+            right: 8px;
         }
         .conv-item:hover .conv-item-export { opacity: 0.6; }
-        .conv-item-export:hover { opacity: 1 !important; background: var(--sidebar-hover); color: var(--accent); }
+        .conv-item-export:hover { opacity: 1 !important; background: rgba(13,148,136,0.15); color: var(--accent); }
         .conv-item-export svg { width: 14px; height: 14px; }
 
         .no-conversations {
@@ -197,6 +209,7 @@
             gap: 8px;
         }
         .no-conversations svg { width: 36px; height: 36px; opacity: 0.3; }
+        .no-conversations-text { font-size: 12px; margin-top: 4px; opacity: 0.7; }
 
         .sidebar-bottom {
             border-top: 1px solid var(--sidebar-border);
@@ -264,6 +277,23 @@
         .btn-toggle-sidebar:hover { background: var(--bg-secondary); color: var(--text-primary); }
         .btn-toggle-sidebar svg { width: 20px; height: 20px; }
 
+        .btn-new-chat-floating {
+            width: 34px; height: 34px;
+            border-radius: 50%;
+            border: none;
+            background: var(--accent);
+            color: #fff;
+            cursor: pointer;
+            display: none;
+            align-items: center; justify-content: center;
+            transition: all var(--transition);
+            flex-shrink: 0;
+            box-shadow: var(--shadow-md);
+        }
+        .btn-new-chat-floating:hover { background: var(--accent-hover); transform: scale(1.05); box-shadow: var(--shadow-lg); }
+        .btn-new-chat-floating svg { width: 18px; height: 18px; }
+        .sidebar.collapsed ~ .main .btn-new-chat-floating { display: flex; }
+
         .header-title {
             font-size: 14px;
             font-weight: 600;
@@ -286,6 +316,7 @@
             padding: 4px 12px 4px 4px;
             border-radius: 24px;
             background: var(--accent-light);
+            border: 1px solid var(--border);
         }
         .header-logo-img {
             width: 28px; height: 28px;
@@ -302,8 +333,8 @@
             color: var(--accent);
         }
         .header-badge {
-            font-size: 11px;
-            padding: 4px 10px;
+            font-size: 14px;
+            padding: 6px 14px;
             border-radius: 12px;
             background: var(--accent-light);
             color: var(--accent);
@@ -381,16 +412,22 @@
             border-bottom-right-radius: 4px;
         }
         .msg.assistant .msg-bubble {
-            background: transparent;
+            background: var(--bg-secondary);
             color: var(--text-primary);
-            padding: 0;
+            padding: 12px 16px;
+            border-radius: var(--radius-md);
+            border-bottom-left-radius: 4px;
         }
 
         .msg-image-preview {
             max-width: 200px;
             max-height: 200px;
+            width: 200px;
+            height: 200px;
+            object-fit: cover;
             border-radius: var(--radius-sm);
             margin-bottom: 8px;
+            display: block;
             border: 1px solid var(--border);
             box-shadow: var(--shadow-sm);
         }
@@ -508,9 +545,14 @@
             min-width: 160px;
             flex: 1;
             box-shadow: var(--shadow-sm);
-            transition: border-color var(--transition);
+            transition: all var(--transition);
+            cursor: pointer;
         }
-        .drug-card:hover { border-color: var(--accent); }
+        .drug-card:hover { 
+            border-color: var(--accent); 
+            transform: translateY(-2px);
+            box-shadow: var(--shadow-md);
+        }
         .drug-card .sim-badge {
             display: inline-block;
             padding: 2px 8px;
@@ -570,27 +612,48 @@
             font-weight: 700;
             box-shadow: 0 8px 24px rgba(13,148,136,0.25);
         }
-        .welcome h2 { font-size: 22px; font-weight: 700; margin-bottom: 8px; color: var(--text-primary); }
-        .welcome p { color: var(--text-secondary); font-size: 14px; line-height: 1.6; margin-bottom: 20px; }
+        .welcome h2 { font-size: 24px; font-weight: 700; margin-bottom: 10px; color: var(--text-primary); }
+        .welcome p { color: var(--text-secondary); font-size: 15px; line-height: 1.7; margin-bottom: 28px; }
 
         .example-chips {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 8px;
-            justify-content: center;
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 10px;
+            max-width: 500px;
+            margin: 0 auto;
         }
         .example-chip {
-            padding: 8px 16px;
+            padding: 12px 18px;
             border: 1px solid var(--border);
-            border-radius: 20px;
+            border-radius: var(--radius-md);
             font-size: 13px;
             cursor: pointer;
             background: var(--bg-elevated);
             transition: all var(--transition);
             color: var(--text-primary);
             font-family: inherit;
+            text-align: left;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            box-shadow: var(--shadow-sm);
         }
-        .example-chip:hover { border-color: var(--accent); background: var(--accent-light); color: var(--accent); }
+        .example-chip:hover { 
+            border-color: var(--accent); 
+            background: var(--accent-light); 
+            color: var(--accent);
+            transform: translateY(-2px);
+            box-shadow: var(--shadow-md);
+        }
+        .example-chip svg {
+            width: 16px;
+            height: 16px;
+            flex-shrink: 0;
+            opacity: 0.7;
+        }
+        .example-chip:hover svg {
+            opacity: 1;
+        }
 
         /* ==================== INPUT AREA ==================== */
         .input-area {
@@ -609,26 +672,29 @@
             position: relative;
             width: 56px; height: 56px;
             border-radius: var(--radius-sm);
-            overflow: hidden;
+            overflow: visible;
             border: 1px solid var(--border);
             box-shadow: var(--shadow-sm);
         }
         .image-preview-area .preview-thumb img {
             width: 100%; height: 100%;
             object-fit: cover;
+            border-radius: var(--radius-sm);
         }
         .image-preview-area .preview-thumb .remove-btn {
             position: absolute;
-            top: -4px; right: -4px;
-            width: 18px; height: 18px;
+            top: -6px; right: -6px;
+            width: 20px; height: 20px;
             border-radius: 50%;
             background: #ef4444;
             color: #fff;
             border: 2px solid var(--bg-elevated);
-            font-size: 10px;
+            font-size: 11px;
             cursor: pointer;
             display: flex; align-items: center; justify-content: center;
             line-height: 1;
+            padding: 0;
+            z-index: 10;
         }
         .input-wrapper {
             display: flex;
@@ -701,6 +767,9 @@
             .chat-inner { padding: 12px 16px 32px; }
             .msg { gap: 8px; }
             .input-area { padding: 0 12px 12px; }
+            .example-chips { grid-template-columns: 1fr; }
+            .welcome h2 { font-size: 20px; }
+            .welcome p { font-size: 14px; }
             .sidebar-overlay {
                 display: none;
                 position: fixed; inset: 0;
@@ -742,7 +811,7 @@
         <div class="sidebar-system-logo">💊</div>
         <div class="sidebar-system-info">
             <div class="sidebar-system-name">PillMate</div>
-            <div class="sidebar-system-meta">CLIP ViT-B/32 · GLM-4-Flash</div>
+            <div class="sidebar-system-meta">家庭用药MRAG助手</div>
         </div>
     </div>
     <div class="sidebar-top">
@@ -755,6 +824,7 @@
         <div class="no-conversations" id="noConvs">
             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg>
             <span>暂无对话</span>
+            <span class="no-conversations-text">开始您的第一次用药咨询吧！</span>
         </div>
     </div>
     <div class="sidebar-bottom">
@@ -763,7 +833,7 @@
         </div>
         <div class="user-info">
             <div class="user-name">用户</div>
-            <div class="user-email">家庭用药助手</div>
+            <div class="user-email">CLIP ViT-B/32 · GLM-4-Flash</div>
         </div>
         <button class="btn-theme-toggle" id="themeToggleBtn" onclick="toggleTheme()" title="切换主题">
             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" id="themeIcon"><circle cx="12" cy="12" r="5"/><line x1="12" y1="1" x2="12" y2="3"/><line x1="12" y1="21" x2="12" y2="23"/><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/><line x1="1" y1="12" x2="3" y2="12"/><line x1="21" y1="12" x2="23" y2="12"/><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/></svg>
@@ -777,13 +847,12 @@
         <button class="btn-toggle-sidebar" onclick="toggleSidebar()">
             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="18" x2="21" y2="18"/></svg>
         </button>
+        <button class="btn-new-chat-floating" onclick="newConversation()" title="新对话">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg>
+        </button>
         <span class="header-title" id="headerTitle">PillMate 家庭用药助手</span>
         <div class="header-right">
             <span class="header-badge" id="drugCountBadge">-- 种药物已索引</span>
-            <div class="header-logo">
-                <div class="header-logo-img">💊</div>
-                <span class="header-logo-text">PillMate</span>
-            </div>
         </div>
     </header>
 
@@ -792,14 +861,23 @@
             <div class="welcome-wrapper" id="welcomeScreen">
                 <div class="welcome">
                     <div class="welcome-logo">💊</div>
-                    <h2>有什么用药问题需要帮助？</h2>
-                    <p>上传药片图片或输入药物名称，获取基于 FDA 官方说明书的专业用药建议</p>
+                    <h2>欢迎使用 PillMate</h2>
+                    <p>您的智能用药助手，支持药片识别与专业用药咨询<br>基于 FDA 官方说明书，提供准确可靠的用药建议</p>
                     <div class="example-chips">
-                        <button class="example-chip" onclick="quickAsk('Naproxen 萘普生是什么药？有什么副作用？')">Naproxen 萘普生</button>
-                        <button class="example-chip" onclick="quickAsk('布洛芬 Ibuprofen 的用法用量和注意事项')">Ibuprofen 布洛芬</button>
-                        <button class="example-chip" onclick="quickAsk('Metformin 二甲双胍的作用机制是什么？')">Metformin 二甲双胍</button>
+                        <button class="example-chip" onclick="quickAsk('Naproxen 萘普生是什么药？有什么副作用？')">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M10.5 20.5l10-10a4.95 4.95 0 1 0-7-7l-10 10a4.95 4.95 0 1 0 7 7z"/><line x1="8.5" y1="8.5" x2="15.5" y2="15.5"/></svg>
+                            Naproxen 萘普生
+                        </button>
+                        <button class="example-chip" onclick="quickAsk('布洛芬 Ibuprofen 的用法用量和注意事项')">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M10.5 20.5l10-10a4.95 4.95 0 1 0-7-7l-10 10a4.95 4.95 0 1 0 7 7z"/><line x1="8.5" y1="8.5" x2="15.5" y2="15.5"/></svg>
+                            Ibuprofen 布洛芬
+                        </button>
+                        <button class="example-chip" onclick="quickAsk('Metformin 二甲双胍的作用机制是什么？')">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M10.5 20.5l10-10a4.95 4.95 0 1 0-7-7l-10 10a4.95 4.95 0 1 0 7 7z"/><line x1="8.5" y1="8.5" x2="15.5" y2="15.5"/></svg>
+                            Metformin 二甲双胍
+                        </button>
                         <button class="example-chip" onclick="document.getElementById('imageInput').click()">
-                            <svg style="width:14px;height:14px;vertical-align:-2px;margin-right:4px" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><polyline points="21 15 16 10 5 21"/></svg>
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><polyline points="21 15 16 10 5 21"/></svg>
                             识别药片图片
                         </button>
                     </div>
@@ -1038,13 +1116,13 @@ function updateHeaderTitle() {
 function buildMessageHTML(m, idx) {
     let avatarHtml = m.role === 'user'
         ? `<div class="msg-avatar"><svg class="avatar-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg></div>`
-        : `<div class="msg-avatar"><svg class="avatar-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="8.5" cy="12" r="2.5"/><circle cx="15.5" cy="12" r="2.5"/><line x1="11" y1="14" x2="13" y2="14"/></svg></div>`;
+        : `<div class="msg-avatar">💊</div>`;
     let bodyHtml;
     if (m.role === 'user') {
         let imgHtml = '';
         const images = Array.isArray(m.imageB64) ? m.imageB64 : (m.imageB64 ? [m.imageB64] : []);
         for (const b64 of images) imgHtml += `<img class="msg-image-preview" src="${b64}" alt="上传的药片图片">`;
-        bodyHtml = `<div class="msg-bubble">${imgHtml}${escapeHtml(m.content)}</div>`;
+        bodyHtml = `<div class="msg-bubble">${imgHtml}${imgHtml && m.content ? '\n' : ''}${escapeHtml(m.content)}</div>`;
     } else {
         bodyHtml = `<div class="msg-bubble"><div class="markdown-body">${marked.parse(m.content)}</div></div>`;
         if (m.retrieved && m.retrieved.length > 0) bodyHtml += buildDrugCards(m.retrieved);
@@ -1128,7 +1206,7 @@ function addTypingIndicator() {
     if (inner.querySelector('.msg.typing-indicator')) return;
     const el = document.createElement('div');
     el.className = 'msg assistant typing-indicator';
-    el.innerHTML = `<div class="msg-avatar"><svg class="avatar-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="8.5" cy="12" r="2.5"/><circle cx="15.5" cy="12" r="2.5"/><line x1="11" y1="14" x2="13" y2="14"/></svg></div><div class="msg-content"><div class="msg-bubble"><div class="typing-dots"><span></span><span></span><span></span></div></div></div>`;
+    el.innerHTML = `<div class="msg-avatar">💊</div><div class="msg-content"><div class="msg-bubble"><div class="typing-dots"><span></span><span></span><span></span></div></div></div>`;
     inner.appendChild(el);
     scrollToBottom();
 }

@@ -1609,7 +1609,7 @@ class Generator:
                 "- ...",
                 "",
                 "# 免责声明（每次回答末尾必须包含）",
-                "> ⚠️ 以上信息仅供参考，不构成医疗建议。用药前请咨询医生，阅读药品说明书。如出现不良反应，请立即就医。"
+                "> ⚠️以上仅供参考，不是医疗建议。用药前请咨询医生，阅读药品说明书。如出现不良反应，请立即就医"
             ]
         else:
             system_prompt_instructions = [
@@ -1649,7 +1649,7 @@ class Generator:
                 "- ...",
                 "",
                 "# 免责声明（每次回答末尾必须包含）",
-                "> ⚠️ 以上信息仅供参考，不构成医疗建议。用药前请咨询医生，阅读药品说明书。如出现不良反应，请立即就医。"
+                "> ⚠️以上仅供参考，不是医疗建议。用药前请咨询医生，阅读药品说明书。如出现不良反应，请立即就医"
             ]
 
         # --- Context Formatting ---
@@ -1711,7 +1711,7 @@ class Generator:
         self.logger.debug(f"Postprocessing LLM raw response (first 100 chars): '{llm_raw_response[:100]}...'")
         processed_response = llm_raw_response.strip()
 
-        DISCLAIMER = "> ⚠️ 以上信息仅供参考，不构成医疗建议。用药前请咨询医生，阅读药品说明书。如出现不良反应，请立即就医。"
+        DISCLAIMER = "> ⚠️以上仅供参考，不是医疗建议。用药前请咨询医生，阅读药品说明书。如出现不良反应，请立即就医"
         if DISCLAIMER not in processed_response:
             processed_response += "\n\n" + DISCLAIMER
 
