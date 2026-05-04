@@ -1,0 +1,48 @@
+{
+  "query_text": "Naproxen 萘普生是什么药？有什么副作用？",
+  "query_type": "text",
+  "top_k": 5,
+  "retrieved_drugs": [
+    {
+      "ndc": "00186-0520-60",
+      "drug_name": null,
+      "generic_name": "naproxen",
+      "manufacturer": null,
+      "physical_properties": [],
+      "similarity": 0.8313814401626587
+    },
+    {
+      "ndc": "00093-5215-01",
+      "drug_name": null,
+      "generic_name": "hydrochlorothiazide",
+      "manufacturer": null,
+      "physical_properties": [],
+      "similarity": 0.7800940275192261
+    },
+    {
+      "ndc": "00093-5213-01",
+      "drug_name": null,
+      "generic_name": "hydrochlorothiazide",
+      "manufacturer": null,
+      "physical_properties": [],
+      "similarity": 0.7800940275192261
+    },
+    {
+      "ndc": "00093-5214-01",
+      "drug_name": null,
+      "generic_name": "hydrochlorothiazide",
+      "manufacturer": null,
+      "physical_properties": [],
+      "similarity": 0.7800940275192261
+    },
+    {
+      "ndc": "51285-0114-58",
+      "drug_name": null,
+      "generic_name": "inert ingredients",
+      "manufacturer": null,
+      "physical_properties": [],
+      "similarity": 0.7720327973365784
+    }
+  ],
+  "response": "**推荐药物**: 萘普生 (Naproxen)\n\n**主要用途**: 萘普生是一种非甾体抗炎药 (NSAID)，主要用于缓解轻至中度的疼痛，如头痛、牙痛、经痛和关节炎，以及减少炎症和降低发烧。\n\n**为什么推荐**: 萘普生适用于缓解疼痛和炎症，其适应症与用户询问的内容相匹配。\n\n**适应症与用法用量**:\n- 成人常用剂量为每次200至400毫克，每日一次，或根据需要每6至8小时一次，但不超过每日1200毫克。\n- 用于治疗关节炎时，剂量可能更高，通常由医生根据病情调整。\n\n**禁忌症与警告**:\n- 对萘普生或其他NSAID过敏者不应使用。\n- 萘普生可能增加心脏病发作或中风的风险，特别是长期使用或在高剂量下。\n- 应避免在即将进行重大手术前使用。\n- 肝脏或肾脏疾病患者、孕妇和哺乳期妇女应谨慎使用或在医生指导下使用。\n\n**常见副作用**:\n- 消化不良、胃痛或胃灼热\n- 恶心、呕吐或腹泻\n- 头痛\n- 耳鸣或听力下降\n- 皮疹或瘙痒\n\n**注意事项**:\n- 使用萘普生期间应避免饮酒。\n- 长期使用可能需要定期检查肝、肾和血液功能。\n- 如出现严重副作用，如呼吸困难、皮疹或黑便，应立即停药并咨询医生。\n\n> ⚠️以上仅供参考，不是医疗建议。用药前请咨询医生，阅读药品说明书。如出现不良反应，请立即就医。"
+}

@@ -1,0 +1,136 @@
+{
+  "query_text": "这是什么药，治什么的",
+  "query_type": "multimodal",
+  "top_k": 5,
+  "retrieved_drugs": [
+    {
+      "ndc": "00074-7149-90",
+      "drug_name": "",
+      "generic_name": "levothyroxine",
+      "manufacturer": "AbbVie Inc.",
+      "physical_properties": [
+        {
+          "imprint": "SYNTHROID / 25"
+        }
+      ],
+      "similarity": 0.7849599540233612
+    },
+    {
+      "ndc": "00074-7068-19",
+      "drug_name": "",
+      "generic_name": "levothyroxine",
+      "manufacturer": "AbbVie Inc.",
+      "physical_properties": [
+        {
+          "imprint": "SYNTHROID / 25"
+        }
+      ],
+      "similarity": 0.7848052263259887
+    },
+    {
+      "ndc": "51672-4042-02",
+      "drug_name": "Clorazepate Dipotassium",
+      "generic_name": "clorazepate",
+      "manufacturer": "Aurolife Pharma LLC",
+      "physical_properties": [
+        {
+          "strength": "3.75 mg",
+          "imprint": "M / 30",
+          "color": "peach"
+        },
+        {
+          "strength": "5 mg",
+          "imprint": "M / 30",
+          "color": "peach"
+        },
+        {
+          "strength": "3.75 mg",
+          "color": "red",
+          "shape": "round",
+          "scored": true,
+          "imprint": "M / 30"
+        },
+        {
+          "strength": "7.5 mg",
+          "color": "red",
+          "shape": "round",
+          "scored": true,
+          "imprint": "M / 30"
+        },
+        {
+          "strength": "15 mg",
+          "color": "white",
+          "shape": "round",
+          "scored": true,
+          "imprint": "M / 30"
+        },
+        {
+          "strength": "15 g",
+          "imprint": "M / 30",
+          "color": "peach"
+        }
+      ],
+      "similarity": 0.7837642341852188
+    },
+    {
+      "ndc": "00832-1024-00",
+      "drug_name": null,
+      "generic_name": "baclofen",
+      "manufacturer": "Cardinal Health 107, LLC",
+      "physical_properties": [
+        {
+          "strength": "10 mg",
+          "color": "white",
+          "shape": "round",
+          "imprint": "ls 288",
+          "scored": true
+        }
+      ],
+      "similarity": 0.7834125250577927
+    },
+    {
+      "ndc": "00093-5769-56",
+      "drug_name": "Olanzapine",
+      "generic_name": "olanzapine",
+      "manufacturer": "Macleods Pharmaceuticals Limited",
+      "physical_properties": [
+        {
+          "strength": "2.5 mg",
+          "color": "white",
+          "shape": "round",
+          "imprint": ""
+        },
+        {
+          "strength": "5 mg",
+          "color": "white",
+          "shape": "round",
+          "imprint": ""
+        },
+        {
+          "strength": "15 mg",
+          "color": "red",
+          "shape": "oval",
+          "imprint": ""
+        },
+        {
+          "strength": "20 mg",
+          "color": "red",
+          "shape": "oval",
+          "imprint": ""
+        },
+        {
+          "strength": "2.5 mg",
+          "imprint": "",
+          "color": "white"
+        },
+        {
+          "strength": "5 mg",
+          "imprint": "",
+          "color": "white"
+        }
+      ],
+      "similarity": 0.7824990034103393
+    }
+  ],
+  "response": "**图片1识别结果**: Synthroid\n**主要用途**: Synthroid是一种用于治疗甲状腺功能减退症的药物。\n\n**适应症与用法用量**:\n- 用于治疗甲状腺功能减退症，即甲状腺激素分泌不足的情况。\n- 剂量应根据患者的具体情况由医生调整。\n\n**禁忌症与警告**:\n- 对levothyroxine或Synthroid成分过敏的患者不应使用。\n- 在某些情况下，如未经控制的甲状腺功能亢进症、严重心脏病或急性心肌梗死，可能需要谨慎使用。\n\n**常见副作用**:\n- 心悸、手颤、失眠、头痛、肌肉或关节疼痛等。\n\n**注意事项**:\n- 在开始使用Synthroid之前，应进行适当的诊断和评估。\n- 使用Synthroid时，应定期监测甲状腺功能。\n\n> ⚠️以上仅供参考，不是医疗建议。用药前请咨询医生，阅读药品说明书。如出现不良反应，请立即就医"
+}

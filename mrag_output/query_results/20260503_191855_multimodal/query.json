@@ -1,0 +1,96 @@
+{
+  "query_text": "这两种药，我感冒能吃吗",
+  "query_type": "multimodal",
+  "top_k": 5,
+  "retrieved_drugs": [
+    {
+      "ndc": "29033-0020-12",
+      "drug_name": "Carbamazepine Extended-Release Capsules",
+      "generic_name": "carbamazepine",
+      "manufacturer": "AvPAK",
+      "physical_properties": [
+        {
+          "strength": "100 mg",
+          "color": "white",
+          "shape": "capsule",
+          "imprint": "apo c100"
+        },
+        {
+          "strength": "200 mg",
+          "color": "white",
+          "shape": "capsule",
+          "imprint": "apo c200"
+        },
+        {
+          "strength": "300 mg",
+          "color": "white",
+          "shape": "capsule",
+          "imprint": "apo c300"
+        }
+      ],
+      "similarity": 0.7927740573883056
+    },
+    {
+      "ndc": "00074-7149-90",
+      "drug_name": "",
+      "generic_name": "levothyroxine",
+      "manufacturer": "AbbVie Inc.",
+      "physical_properties": [
+        {
+          "imprint": "SYNTHROID / 25"
+        }
+      ],
+      "similarity": 0.7910517364740371
+    },
+    {
+      "ndc": "00002-3239-30",
+      "drug_name": "These highlights do not include all the information needed to use STRATTERA safely and effectively. See full prescribing information for STRATTERA.",
+      "generic_name": "atomoxetine",
+      "manufacturer": "Eli Lilly and Company",
+      "physical_properties": [
+        {
+          "strength": "10 mg",
+          "color": "white",
+          "imprint": ""
+        }
+      ],
+      "similarity": 0.7795488417148589
+    },
+    {
+      "ndc": "16252-0572-50",
+      "drug_name": "Ramipril",
+      "generic_name": "ramipril",
+      "manufacturer": "Northwind Health Company, LLC",
+      "physical_properties": [
+        {
+          "strength": "5 mg",
+          "shape": "capsule",
+          "imprint": ""
+        },
+        {
+          "strength": "5 mg",
+          "color": "white",
+          "shape": "capsule",
+          "imprint": ""
+        }
+      ],
+      "similarity": 0.7757943391799926
+    },
+    {
+      "ndc": "00781-2020-05",
+      "drug_name": "Amoxicillin",
+      "generic_name": "amoxicillin",
+      "manufacturer": "Northwind Health Company, LLC",
+      "physical_properties": [
+        {
+          "strength": "250 mg",
+          "color": "yellow",
+          "shape": "capsule",
+          "imprint": ""
+        }
+      ],
+      "similarity": 0.7752958565950393
+    }
+  ],
+  "response": "**图片1识别结果**: Carbatrol\n**主要用途**: Carbatrol是一种抗癫痫药物，用于治疗部分性癫痫发作、全身性强直-阵挛性发作（大发作）和三叉神经痛。\n\n**适应症与用法用量**:\n- 部分性癫痫发作：初始剂量为200毫克，每日两次。根据患者的反应，每周增加200毫克，直到达到最佳效果。维持剂量通常为每日800至1200毫克。\n- 全身性强直-阵挛性发作：初始剂量为200毫克，每日两次。根据患者的反应，每周增加200毫克，直到达到最佳效果。维持剂量通常为每日800至1200毫克。\n- 三叉神经痛：用于治疗三叉神经痛的疼痛。\n\n**禁忌症与警告**:\n- 对卡马西平或药物组分过敏的患者不应使用。\n- 在开始使用卡马西平之前，应进行血液检查，包括全血细胞计数、肝功能和甲状腺功能。\n\n**常见副作用**:\n- 头痛、头晕、嗜睡、恶心、呕吐、共济失调、视力模糊。\n\n**注意事项**:\n- 在服用卡马西平期间，应定期进行血液检查。\n- 避免饮酒，因为可能会增加副作用的风险。\n\n**图片2识别结果**: Synthroid\n**主要用途**: Synthroid是一种甲状腺激素替代药物，用于治疗甲状腺功能减退症。\n\n**适应症与用法用量**:\n- 甲状腺功能减退症：剂量根据患者的病情和甲状腺功能测试结果进行调整。\n\n**禁忌症与警告**:\n- 对甲状腺激素或药物组分过敏的患者不应使用。\n- 在开始使用Synthroid之前，应进行血液检查，包括甲状腺功能测试。\n\n**常见副作用**:\n- 头痛、恶心、腹泻、体重增加、肌肉或关节疼痛。\n\n**注意事项**:\n- Synthroid应每天在同一时间服用，以保持稳定的血药浓度。\n- 在服用Synthroid期间，应定期进行甲状腺功能测试。\n\n**用户额外问题回答**:\n这两种药物都不是用于治疗感冒的。Carbatrol用于治疗癫痫和三叉神经痛，而Synthroid用于治疗甲状腺功能减退症。感冒通常由病毒引起，需要使用针对病毒感染的抗病毒药物或对症治疗药物。在使用任何药物之前，请咨询医生。\n\n> ⚠️以上仅供参考，不是医疗建议。用药前请咨询医生，阅读药品说明书。如出现不良反应，请立即就医"
+}

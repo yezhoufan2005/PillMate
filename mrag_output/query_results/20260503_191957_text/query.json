@@ -1,0 +1,48 @@
+{
+  "query_text": "好的，还有别的吗",
+  "query_type": "text",
+  "top_k": 5,
+  "retrieved_drugs": [
+    {
+      "ndc": "00093-5215-01",
+      "drug_name": null,
+      "generic_name": "hydrochlorothiazide",
+      "manufacturer": null,
+      "physical_properties": [],
+      "similarity": 0.7681347131729126
+    },
+    {
+      "ndc": "00093-5213-01",
+      "drug_name": null,
+      "generic_name": "hydrochlorothiazide",
+      "manufacturer": null,
+      "physical_properties": [],
+      "similarity": 0.7681347131729126
+    },
+    {
+      "ndc": "00093-5214-01",
+      "drug_name": null,
+      "generic_name": "hydrochlorothiazide",
+      "manufacturer": null,
+      "physical_properties": [],
+      "similarity": 0.7681347131729126
+    },
+    {
+      "ndc": "51285-0063-90",
+      "drug_name": null,
+      "generic_name": "estradiol",
+      "manufacturer": null,
+      "physical_properties": [],
+      "similarity": 0.7539308071136475
+    },
+    {
+      "ndc": "51285-0114-58",
+      "drug_name": null,
+      "generic_name": "inert ingredients",
+      "manufacturer": null,
+      "physical_properties": [],
+      "similarity": 0.7484146952629089
+    }
+  ],
+  "response": "目前根据您提供的信息，我无法提供更多的药物建议。如果您有具体的症状或用药需求，请告诉我，我将根据FDA官方药品说明书为您提供相应的用药建议。\n\n例如，如果您提到有头痛、发烧、感冒等症状，我可以根据这些症状推荐相应的药物。请提供更多的信息，以便我能够更好地帮助您。\n\n> ⚠️以上仅供参考，不是医疗建议。用药前请咨询医生，阅读药品说明书。如出现不良反应，请立即就医"
+}
